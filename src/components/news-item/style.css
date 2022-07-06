@@ -11,21 +11,27 @@
 
 .card-news{
   border-radius: 15px 15px 0 0;
+  overflow: hidden;
+  max-height: 190px;
+  text-overflow: ellipsis; 
 }
 
 .site-card-wrapper:hover {
   box-shadow: 5px 2px 44px -8px rgba(34, 60, 80, 0.123);
 }
 
-.btn-more{
+.btn-more, .btn-del{
   background-color: rgba(5, 5, 5, 0.623);
   border: none;
-  margin-top: 5%;
+  margin: 2%;
 }
 
+.btn-del{
+
+}
 
 @media (min-width: 767px) {
   .site-card-wrapper{
-    width: 25%;
+    width: 30%;
   }
 }
