@@ -1,6 +1,21 @@
 .wrapper-news-list{
-  padding: 5rem;
+  /* padding: 5rem; */
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
+}
+
+.example {
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  display: block;
+  margin: 20px 0;
+  margin-bottom: 20px;
+  padding: 150px 200px;
+  text-align: center;
+  background: rgb(197 196 181 / 19%);
+  border-radius: 15px;
 }

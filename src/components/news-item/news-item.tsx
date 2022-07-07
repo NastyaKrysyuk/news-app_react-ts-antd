@@ -3,11 +3,12 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Popover, Row } from 'antd';
 import './style.css'
 
-const NewsItem = ({ title, description, url, urlToImage }: {
+const NewsItem = ({ title, description, url, urlToImage ,handlerSearch}: {
   title: string,
   description: string,
   url: string,
   urlToImage: string,
+  handlerSearch:any
 }) => {
   return (
     <div className="site-card-wrapper" style={{ backgroundImage: `url(${urlToImage})` }}>
@@ -24,7 +25,7 @@ const NewsItem = ({ title, description, url, urlToImage }: {
         </Button>
       </a>
       <Popover content='Hide'>
-        <Button type="primary" shape="round" className='btn-del' onClick={(_e: any) => { _e.preventDefault() }}>
+        <Button type="primary" shape="round" className='btn-del' onClick={handlerSearch(title)}>
           <DeleteOutlined />
         </Button>
       </Popover>
