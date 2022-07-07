@@ -9,23 +9,15 @@ import './style.css'
 const SearchComponent : React.FC  = () => {
   const { Search } = Input;
   const context:any=useContext(AppContext)
-  const [search, setSearch] = useState("");
-
- console.log(context.articles)
-
-useEffect(()=>{
-  const arr=context?.articles.filter((item:TNewsItem) =>item.description.includes(search));
-  context.setArticles(arr)
-},[search])
-
+// console.log(context.search)
   return (
 <Search
  placeholder="input to search" 
  allowClear 
  style={{ width: '40%' }} 
- value={search}
+ value={context.search}
  onChange={(_e:any)=>{
-  setSearch(_e.target.value)
+  context.handlerChangeSearch(_e.target.value)
  }}
  />
   )

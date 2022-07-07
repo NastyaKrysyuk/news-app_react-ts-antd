@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TNewsItem } from "../../type/type";
 import Newsapi from "../../services/config";
+import AppContext from '../context/context'
+
 
 type TFilter = {
   totalLenght: number;
@@ -23,7 +25,9 @@ const useNewsList = ({ pageSize }: { pageSize: number }) => {
     minIndex: 0,
     maxIndex: 0
   })
-
+  
+  const context:any=useContext(AppContext)
+  
   //запрос на список героев 
   const getNews = async () => {
     setLoading(true)

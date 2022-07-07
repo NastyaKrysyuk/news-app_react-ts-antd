@@ -1,16 +1,18 @@
 import AppContext from "./context";
-import useNewsList from "../news-list/news-list.hook";
-import { FC } from "react";
+import { FC, useState } from "react";
 
-const MyProvider: FC<{children: any}> = ({children}) => {
-  const { loading, error, articles, filter, handlerPage, setArticles } = useNewsList({ pageSize: 6 })
+const MyProvider: FC<{ children: any }> = ({ children }) => {
+  const [search, setSearch] = useState("");
 
-
+  const handlerChangeSearch=(value:string)=>{
+    setSearch(value)
+  }
+  
   return (
-    <AppContext.Provider value={{loading:loading, error:error, articles:articles, filter:filter, handlerPage:handlerPage, setArticles:setArticles }}>
-    {children}
+    <AppContext.Provider value={{ search: search, handlerChangeSearch: handlerChangeSearch }}>
+      {children}
     </AppContext.Provider>
-)
+  )
 }
 
 export default MyProvider
