@@ -15,13 +15,13 @@ const NewsList = () => {
         }
     }, [])
 
-    const handlerRemove = (title: string) => {
+    const handlerAddtoRead = (title: string) => {
         return (e: any) => {
-            e.stopPropagation();
-            const arr: TNewsItem[] | [] = news.filter((el) => {
-                return el.title !== title
+            e.preventDefault();
+            const arr: any= news.find((el) => {
+                return el.title == title
             });
-            removeNews(arr)
+            localStorage.setItem(title,JSON.stringify(arr))
         };
     };
 
@@ -40,7 +40,7 @@ const NewsList = () => {
                     return (
                         <NewsItem
                             key={article.title}
-                            handlerSearch={handlerRemove}
+                            handlerAddtoRead={handlerAddtoRead}
                             title={article.title}
                             description={article.description}
                             url={article.url}
