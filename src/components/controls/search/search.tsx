@@ -1,27 +1,29 @@
 import { Input } from "antd";
-import { useContext, useEffect, useState } from "react";
-import { TNewsItem } from "../../../type/type";
+import {useState} from "react";
 
-import { useNewsAsincContext } from "../../../context/news/useNewsContext";
-
+import { useNewsAsyncContext } from "../../../context/news/useNewsContext";
 
 import './style.css'
+const { Search } = Input;
 
 const SearchComponent : React.FC  = () => {
+    const { queryInput, searchNews } = useNewsAsyncContext()
+    const [state, setState] = useState(queryInput);
 
-  const { handlerChangeSearch,search,searchNews } = useNewsAsincContext()
-  const { Search } = Input;
+    const handlerSearch = (e: any) => {
+        setState(e.target.value)
+    }
 
-  return (
-<Search
- placeholder="input to search" 
- allowClear 
- style={{ width: '40%' }} 
- value={''}
- onChange={(_e:any)=>{
-  searchNews(_e.target.value)
- }}
- />
-  )
+    return (
+        <Search
+            placeholder="input to search"
+            allowClear
+            style={{ width: '40%' }}
+            value={state}
+            onChange={handlerSearch}
+            onSearch={(_e: any) => searchNews(state)}
+            onBlur={(_e: any) => searchNews(state)}
+        />
+    )
 }
 export default SearchComponent                                                                                                                                

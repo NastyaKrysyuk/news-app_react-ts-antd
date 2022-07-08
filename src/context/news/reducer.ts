@@ -53,7 +53,7 @@ export default function CommonReducer(
             return { ...state, news: actions.news }
 
         case ActionsTypesNews.SEARCH_NEWS:
-            return { ...state,  isLoading: false, queryInput: actions.queryInput, news: actions.news, filter: actions.filter }
+            return { ...state, isLoading: false, queryInput: actions.queryInput, news: actions.news, filter: actions.filter }
         default:
             return state;
     }

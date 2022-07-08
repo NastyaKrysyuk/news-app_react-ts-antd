@@ -30,16 +30,16 @@ export const SetNewsFilterAction = (filter: TFilterNews) => ({
 });
 
 
-export const RemoveNewsAction = (news:TNewsItem[]) => ({
+export const RemoveNewsAction = (news: TNewsItem[]) => ({
 	type: ActionsTypesNews.REMOVE_NEWS,
 	news
 });
 
 
 
-export const SearchNewsAction = (news: TNewsItem[], filter: TFilterNews,queryInput:string) => ({
+export const SearchNewsAction = (news: TNewsItem[], filter: TFilterNews, queryInput:string) => ({
 	type: ActionsTypesNews.SEARCH_NEWS,
 	news,
 	filter,
-  queryInput
+	queryInput
 });

@@ -7,7 +7,7 @@ import { TFilterNews } from "./reducer";
 
 //кастомный хук для использования стора и диспатч из провайдера
 const useNewsContext = () => {
-    const { store, dispatch, search, handlerChangeSearch } = useContext(NewsContext)
+    const { store, dispatch } = useContext(NewsContext)
     if (dispatch === undefined) {
         throw new Error('dispatch must be inside a Provider with a value');
     }
@@ -15,12 +15,12 @@ const useNewsContext = () => {
         throw new Error('store must be inside a Provider with a value');
     }
 
-    return { store, dispatch, search, handlerChangeSearch }
+    return { store, dispatch }
 }
 
 //
-const useNewsAsincContext = () => {
-    const { store, dispatch, search, handlerChangeSearch } = useNewsContext()
+const useNewsAsyncContext = () => {
+    const { store, dispatch } = useNewsContext()
 
     //запрос за новостями 
     const getNews = async () => {
@@ -69,8 +69,8 @@ const useNewsAsincContext = () => {
         }
     }
 
-    return { ...store, getNews, setFilter, removeNews, search, handlerChangeSearch, searchNews }
+    return { ...store, getNews, setFilter, removeNews, searchNews }
 
 }
 
-export { useNewsAsincContext }
+export { useNewsContext, useNewsAsyncContext }

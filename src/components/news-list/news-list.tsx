@@ -3,11 +3,11 @@ import { useEffect } from 'react'
 import NewsItem from '../news-item/news-item';
 import './style.css'
 import { Pagination, Spin } from 'antd';
-import { useNewsAsincContext } from '../../context/news/useNewsContext';
+import { useNewsAsyncContext } from '../../context/news/useNewsContext';
 import { TNewsItem } from '../../type/type';
 
 const NewsList = () => {
-    const { isLoading, filter, error, news, getNews, setFilter, removeNews,search } = useNewsAsincContext()
+    const { isLoading, filter, error, news, getNews, setFilter, removeNews, queryInput } = useNewsAsyncContext()
 
     useEffect(() => {
         if (!news.length) {
@@ -16,8 +16,8 @@ const NewsList = () => {
     }, [])
 
     const handlerRemove = (title: string) => {
-        return (_e: any) => {
-            _e.stopPropagation();
+        return (e: any) => {
+            e.stopPropagation();
             const arr: TNewsItem[] | [] = news.filter((el) => {
                 return el.title !== title
             });
@@ -26,7 +26,6 @@ const NewsList = () => {
     };
 
     const handlerPagination = (page: number, pageSize: number) => {
-
         //отправь запрос по ...&page=page&pageSize=9
         setFilter({ ...filter, page: page, pageSize: pageSize })
     }
@@ -37,8 +36,8 @@ const NewsList = () => {
             {isLoading && <div className="example"><Spin /></div>}
             {news &&
                 !error &&
-                !isLoading && news && news?.map((article) => {       
-                        return (
+                !isLoading && news?.map((article) => {
+                    return (
                         <NewsItem
                             key={article.title}
                             handlerSearch={handlerRemove}
