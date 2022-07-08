@@ -8,5 +8,5 @@ export const ActionsTypesNews = {
 
     REMOVE_NEWS: '[NEWS] REMOVE_NEWS',
 
-    // SEARCH_NEWS:'[NEWS] SEARCH_NEWS'
+    SEARCH_NEWS:'[NEWS] SEARCH_NEWS'
 } as const;

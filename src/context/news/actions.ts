@@ -35,7 +35,11 @@ export const RemoveNewsAction = (news:TNewsItem[]) => ({
 	news
 });
 
-// export const SearchNewsAction = (news:any) => ({
-// 	type: ActionsTypesNews.SEARCH_NEWS,
-// 	news
-// });
+
+
+export const SearchNewsAction = (news: TNewsItem[], filter: TFilterNews,queryInput:string) => ({
+	type: ActionsTypesNews.SEARCH_NEWS,
+	news,
+	filter,
+  queryInput
+});

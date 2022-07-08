@@ -9,7 +9,7 @@ import './style.css'
 
 const SearchComponent : React.FC  = () => {
 
-  const { handlerChangeSearch,search } = useNewsAsincContext()
+  const { handlerChangeSearch,search,searchNews } = useNewsAsincContext()
   const { Search } = Input;
 
   return (
@@ -17,9 +17,9 @@ const SearchComponent : React.FC  = () => {
  placeholder="input to search" 
  allowClear 
  style={{ width: '40%' }} 
- value={search}
+ value={''}
  onChange={(_e:any)=>{
-  handlerChangeSearch(_e.target.value)
+  searchNews(_e.target.value)
  }}
  />
   )

@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import Newsapi from "../../services/config";
-import { GetNewsErrorAction, GetNewsStartAction, GetNewsSucssesAction, RemoveNewsAction, SetNewsFilterAction } from "./actions";
+import { GetNewsErrorAction, GetNewsStartAction, GetNewsSucssesAction, RemoveNewsAction, SearchNewsAction, SetNewsFilterAction } from "./actions";
 import { NewsContext } from "./news-context"
 import { TFilterNews } from "./reducer";
 
@@ -57,12 +57,19 @@ const useNewsAsincContext = () => {
         dispatch(RemoveNewsAction(news))
     }
 
-    // //для поиска новости 
-    // const searchNews = async (news: any) => {
-    //     dispatch(SearchNewsAction(news))
-    // }
+    // для поиска новости 
+    const searchNews = async (valueInput: string) => {
+        dispatch(GetNewsStartAction())
+        try {
+            //запрос с учётом номера страницы valueInput
+            const { articles, totalResults } = await Newsapi.getNews1(store.filter.page, store.filter.pageSize, valueInput)
+            dispatch(SearchNewsAction(articles, { ...store.filter }, valueInput))
+        } catch (e: any) {
+            dispatch(GetNewsErrorAction(e))
+        }
+    }
 
-    return { ...store, getNews, setFilter, removeNews, search, handlerChangeSearch  }
+    return { ...store, getNews, setFilter, removeNews, search, handlerChangeSearch, searchNews }
 
 }
 

@@ -18,6 +18,7 @@ export type NewsStore = {
     filter: TFilterNews;
     isLoading: boolean;
     error: any;
+    queryInput: string
 };
 
 //первоначальный стейт
@@ -29,6 +30,7 @@ export const initialStore: NewsStore = {
     },
     isLoading: false,
     error: null,
+    queryInput: ''
 };
 
 /*описание редюсера
@@ -50,8 +52,8 @@ export default function CommonReducer(
         case ActionsTypesNews.REMOVE_NEWS:
             return { ...state, news: actions.news }
 
-        // case ActionsTypesNews.SEARCH_NEWS:
-        //     return { ...state, news: actions.news }
+        case ActionsTypesNews.SEARCH_NEWS:
+            return { ...state,  isLoading: false, queryInput: actions.queryInput, news: actions.news, filter: actions.filter }
         default:
             return state;
     }

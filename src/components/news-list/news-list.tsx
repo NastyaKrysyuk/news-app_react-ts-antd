@@ -37,8 +37,7 @@ const NewsList = () => {
             {isLoading && <div className="example"><Spin /></div>}
             {news &&
                 !error &&
-                !isLoading && news && news?.map((article) => {
-                    if(article.title.includes(search)){         
+                !isLoading && news && news?.map((article) => {       
                         return (
                         <NewsItem
                             key={article.title}
@@ -46,10 +45,8 @@ const NewsList = () => {
                             title={article.title}
                             description={article.description}
                             url={article.url}
-                            urlToImage={article.urlToImage}
-                        />
-                    )}
-           
+                            urlToImage={article.urlToImage}  />
+                    )
                 })}
             <Pagination
                 current={filter.page}
