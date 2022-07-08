@@ -23,14 +23,14 @@ const useNewsAsyncContext = () => {
     const { store, dispatch } = useNewsContext()
 
     //запрос за новостями 
-    const getNews = async () => {
+    const getNews = async (valueInput?: string) => {
         //вызываем экшн на старт запроса {type: ActionsTypesNews.GET_NEWS_START} => {...state, isLoading: true}
         dispatch(GetNewsStartAction())
 
         try {
 
             //запрос за новостями 
-            const { articles, totalResults } = await Newsapi.getNews1(store.filter.page, store.filter.pageSize)
+            const { articles, totalResults } = await Newsapi.getNews1(store.filter.page, store.filter.pageSize,valueInput)
             //вызываем экшен при получении новостей {type: ActionsTypesNews.GET_NEWS_SUCSSES, news, filter}=>{...state, isLoading: false, news: actions.news, filter: actions.filter}
             dispatch(GetNewsSucssesAction(articles, { ...store.filter, count: totalResults }))
 

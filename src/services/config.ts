@@ -1,6 +1,6 @@
 import {  TNewsItem } from "../type/type";
-const path = "https://newsapi.org/v2/everything?q=art&";
-const apiKey = '&apiKey=e1f6d61fb3224655b09882e1f3fc11b4'
+const path = "https://newsapi.org/v2/everything?q=art%";
+const apiKey = '&searchIn=title&apiKey=767d098e86da4912982b1bb48f2e0e72'
 
 export async function getData(url: string): Promise<any> {
   const res = await fetch(`${path}${url}${apiKey}`)

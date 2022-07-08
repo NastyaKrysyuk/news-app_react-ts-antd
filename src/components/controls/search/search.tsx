@@ -9,7 +9,7 @@ const { Search } = Input;
 const SearchComponent : React.FC  = () => {
     const { queryInput, searchNews } = useNewsAsyncContext()
     const [state, setState] = useState(queryInput);
-
+  console.log(state)
     const handlerSearch = (e: any) => {
         setState(e.target.value)
     }
