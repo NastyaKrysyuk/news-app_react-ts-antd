@@ -20,6 +20,7 @@ const FormComponent: FC<FormProps> = ({ title, handleClick }) => {
     console.log('Failed:', errorInfo);
   };
   return (
+
     <Form
       name="basic"
       labelCol={{ span: 8 }}

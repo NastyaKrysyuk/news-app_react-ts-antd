@@ -11,8 +11,7 @@ const RegisterPage = () => {
                     Already have an account? <Link to="/login">Sign in</Link>
                 </p>
             </div>
-            <div className="img-content">
-            </div>
+
         </div>
     )
 }

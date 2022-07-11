@@ -6,10 +6,7 @@ body {
 }
 
 .auth-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 8rem;
+display: flex
 }
 
 .caption-form{

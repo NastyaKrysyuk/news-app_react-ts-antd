@@ -11,6 +11,7 @@ const LoginPage = () => {
                     Or <Link to="/register">register</Link>
                 </p>
             </div>
+
             <div className="img-content">
             </div>
         </div>
