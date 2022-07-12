@@ -1,0 +1,1 @@
+import AddNews from "./addNewsPage";
