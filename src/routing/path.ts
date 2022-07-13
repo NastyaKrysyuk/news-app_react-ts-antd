@@ -4,5 +4,5 @@ export enum Paths  {
   'register' = '/register',
   'readinglist' = '/readinglist',
   'addnews' = '/addnews',
-  'newsitem'='/:title'  
+  'newsitem'='article/:title'
 }

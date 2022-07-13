@@ -27,7 +27,7 @@ const NewsList: React.FC = () => {
         };
     };
 
-    const handlerAddtoRead = (title: string) => {
+    const handlerAddToRead = (title: string) => {
         return (e: any) => {
             e.preventDefault();
             const arr: TNewsItem | undefined = articles.find((el) => {
@@ -59,7 +59,7 @@ const NewsList: React.FC = () => {
                 <NewsItem
                     articles={filterBySearch(articles, search)}
                     handlerRemove={handlerRemove}
-                    handlerAddToRead={handlerAddtoRead}
+                    handlerAddToRead={handlerAddToRead}
                     handlerPage={handlerPage}
                     filter={filter}
                 />

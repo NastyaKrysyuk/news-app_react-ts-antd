@@ -23,7 +23,7 @@ const NewsItem = ({ articles, handlerRemove, handlerAddToRead, handlerPage, filt
           index >= filter.minIndex &&
           index < filter.maxIndex &&
           <div className="site-card-wrapper" style={{ backgroundImage: `url(${article.urlToImage})`, cursor: 'pointer' }} onClick={(e: any) => {
-            navigate(`/${article.title}`)
+            navigate(`article/${article.title}`)
           }}>
             <a >
               <Row gutter={1} style={{ display: 'block' }}>
