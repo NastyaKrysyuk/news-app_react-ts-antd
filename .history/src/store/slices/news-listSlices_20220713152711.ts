@@ -6,14 +6,18 @@ export const fetchNewsList = createAsyncThunk(
   'NewsList/fetchNewsList',
   async function (sortBy: string, { rejectWithValue }) {
     try {
-      const response: any = await Newsapi.getNews(`?q=art%painter&NFT&`, sortBy).then((response: any) => response.articles)
-      return response;
+      // const response = await fetch(`https://newsapi.org/v2/everything?q=art%painter&NFT&sortBy=${sortBy}&apiKey=e1f6d61fb3224655b09882e1f3fc11b4`);
+ const response:any = await Newsapi.getNews(`?q=art%painter&NFT&${sortBy}`)
+      if 
+      (!response.ok) throw new Error('Server Error!');
+
+      // const data = await response.json();
+      return response.articles;
 
     } catch (error) {
       //@ts-ignore
       return rejectWithValue(error.message);
-    }
-  });
+    }});
 
 const NewsListSlice = createSlice({
   name: 'news-list',
