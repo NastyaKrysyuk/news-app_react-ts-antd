@@ -4,25 +4,24 @@ import { Button, Card, Col, Pagination, Popover, Row } from 'antd';
 import { TNewsItem } from '../../type/type';
 import './style.css'
 import { useNavigate } from "react-router-dom";
-import { cursorTo } from "readline";
 
-const NewsItem = ({ articles, handlerRemove, handlerAddToRead, handlerPage, filter }: {
+const NewsItem = ({ articles, handlerRemove , handlerAddToRead,handlerPage,filter}: {
   articles: TNewsItem[] | [],
   handlerRemove: any,
-  handlerAddToRead: any,
-  handlerPage: any,
-  filter: any
+  handlerAddToRead:any,
+  handlerPage:any,
+  filter:any
 }) => {
   const values: [] | TNewsItem[] = useDeferredValue(articles);
   const navigate = useNavigate()
-
+	
   return (
     <>
       {
         values.map((article: TNewsItem, index: number) => (
-          index >= filter.minIndex &&
+          index >= filter.minIndex && 
           index < filter.maxIndex &&
-          <div className="site-card-wrapper" style={{ backgroundImage: `url(${article.urlToImage})`, cursor: 'pointer' }} onClick={(e: any) => {
+          <div  className="site-card-wrapper" style={{ backgroundImage: `url(${article.urlToImage})` }} onClick={(e:any)=>{
             navigate(`/${article.title}`)
           }}>
             <a >

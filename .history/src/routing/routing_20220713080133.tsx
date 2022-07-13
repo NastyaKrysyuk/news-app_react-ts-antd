@@ -7,11 +7,10 @@ import LoginPage from "../pages/Login";
 import RegisterPage from "../pages/Register";
 import ReadingListPage from "../pages/ReadingList";
 import AddNewsPage from "../pages/AddNews";
-import Article from "../components/news-article";
 
 export const HomeRoutes: TRoute[] = [
   { path: Paths.main, element: <HomePage />, name: 'Home' },
-  { path: Paths.newsitem, element: <Article/>, name: 'NewsItem' },
+  { path: Paths.newsitem, element: <>>, name: 'NewsItem' },
 ]
 
 export const Routes: TRoute[] = [
