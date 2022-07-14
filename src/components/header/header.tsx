@@ -1,7 +1,6 @@
 import { Badge, Button, PageHeader } from "antd";
+import {Auth, getAuth} from "firebase/auth";
 import './style.css'
-import { useEffect } from "react";
-import Link from "antd/lib/typography/Link";
 import { NavLink } from "react-router-dom";
 import { useAppDispatch } from "../../hook/redux-hooks";
 import { useAuth } from "../../hook/use-auth";
@@ -9,7 +8,7 @@ import { removeUser } from "../../store/slices/authSlices";
 
 const Header = () => {
   const dispatch = useAppDispatch();
-
+  const auth = getAuth();
   const { isAuth, email } = useAuth();
   return (
     <PageHeader
@@ -24,7 +23,10 @@ const Header = () => {
           </Badge>
           <NavLink to='/addnews'>Add news</NavLink>
           <Button type="link" className="btn-logout"
-            onClick={() => dispatch(removeUser())}
+            onClick={() => {
+              dispatch(removeUser())
+              auth.signOut()
+            }}
           >Log out from {email}</Button>
         </nav>
       }
