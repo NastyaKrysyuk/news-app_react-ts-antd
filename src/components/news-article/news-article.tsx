@@ -1,4 +1,12 @@
+import {useAppSelector} from "../../hook/redux-hooks";
+
 const Article=()=>{
-  return <h1>123</h1>
+  const article = useAppSelector((state) => state.newsList.article)
+  return (
+      <div>
+        <h1>{article?.title}</h1>
+        <p>{article?.description}</p>
+      </div>
+  )
 }
 export default Article
