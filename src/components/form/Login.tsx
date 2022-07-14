@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import FormComponent from "./Form";
@@ -8,9 +8,13 @@ import {useEffect} from "react";
 
 
 const Login=()=>{
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    let location: any = useLocation();
+  
+    let from = location.state?.from?.pathname || "/";
     const auth = getAuth();
+
     useEffect(() => {
         auth.onAuthStateChanged(user => {
             if (user?.email) {
@@ -19,10 +23,9 @@ const Login=()=>{
                     id: user.uid,
                     token: user.refreshToken,
                 }));
-                navigate('/', { replace: true });
+                navigate(from, { replace: true });
             }
         })
-
     }, []);
 
   const handleLogin = (email: string, password: string) => {

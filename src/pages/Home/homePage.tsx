@@ -5,16 +5,11 @@ import { useAuth } from "../../hook/use-auth";
 import { removeUser } from "../../store/slices/authSlices";
 
 const HomePage = () => {
-  const { isAuth, email } = useAuth();
 
   return (
-    isAuth ?
-      <div>
+    <div>
         <NewsList />
-      </div>
-      : (
-        <Navigate to="/login" replace />
-      )
+    </div>
   )
 }
 export default HomePage

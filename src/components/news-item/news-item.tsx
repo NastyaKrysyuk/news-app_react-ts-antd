@@ -76,7 +76,7 @@ const NewsItem: FC<TProps> = ({ articles }) => {
           index >= filter.minIndex && index < filter.maxIndex &&
           <div
             key={index}
-            className="site-card-wrapper"
+            className="castom-card site-card-wrapper"
             style={{ backgroundImage: `url(${article.urlToImage})` }}
             onClick={handlerOpen(article)}>
               <Row gutter={1} style={{ display: 'block' }}>
