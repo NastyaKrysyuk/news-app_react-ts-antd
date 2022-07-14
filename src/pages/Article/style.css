@@ -1,5 +1,18 @@
-.article{
+.article {
   padding: 3rem;
   background: #ececec;
 }
 
+.btn-article {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 1rem;
+}
+
+.description{
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  font-size: 2rem;
+}
