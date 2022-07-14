@@ -23,12 +23,7 @@ export const Routes: TRoute[] = [
 ]
 
 function AppRouting() {
-  console.log(Routes);
 
-  return (
-    <>
-      {useRoutes(Routes)}
-    </>
-  )
+  return useRoutes(Routes)
 }
 export default AppRouting

@@ -1,7 +1,7 @@
 
 import { Select } from 'antd';
 import { useAppDispatch } from '../../../hook/redux-hooks';
-import { fetchNewsList } from '../../../store/slices/news-listSlices';
+import {fetchNewsList} from "../../../store/actions/news";
 const FilterComponent = () => {
   const { Option } = Select;
 

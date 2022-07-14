@@ -1,19 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import Newsapi from '../../services/config';
+import {fetchNewsList} from "../actions/news";
 
 
-export const fetchNewsList = createAsyncThunk(
-  'NewsList/fetchNewsList',
-  async function (sortBy: string, { rejectWithValue }) {
-    try {
-      const response: any = await Newsapi.getNews(`?q=art%painter&NFT&`, sortBy).then((response: any) => response.articles)
-      return response;
-
-    } catch (error) {
-      //@ts-ignore
-      return rejectWithValue(error.message);
-    }
-  });
 
 const NewsListSlice = createSlice({
   name: 'news-list',
@@ -32,19 +20,16 @@ const NewsListSlice = createSlice({
     }
   },
   extraReducers: {
-    //@ts-ignore
-    [fetchNewsList.pending]: (state) => {
+    [fetchNewsList.pending.type]: (state) => {
       state.loading = true;
     },
-    //@ts-ignore
-    [fetchNewsList.fulfilled]: (state, action) => {
+    [fetchNewsList.fulfilled.type]: (state, action) => {
       state.error = false;
       state.loading = false;
       state.articles = action.payload;
     },
-    //@ts-ignore
-    [fetchNewsList.rejected]: (state, action) => {
-      state.status = 'rejected';
+    [fetchNewsList.rejected.type]: (state, action) => {
+      // state.status = 'rejected';
       state.error = action.payload;
     },
   }
