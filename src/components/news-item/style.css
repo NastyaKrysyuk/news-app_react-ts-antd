@@ -30,7 +30,9 @@
 .btn-del{
 
 }
-
+.castom-card .ant-card-head {
+  color: red;
+}
 @media (min-width: 767px) {
   .site-card-wrapper{
     width: 30%;
