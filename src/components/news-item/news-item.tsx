@@ -69,6 +69,7 @@ const NewsItem: FC<TProps> = ({ articles }) => {
     handlerPage(filter.current)
   }, [])
 
+  
   return (
     <>
       {
