@@ -8,7 +8,7 @@ import { useAppSelector } from '../../hook/redux-hooks';
 import { useAppDispatch } from '../../hook/redux-hooks';
 import { Spin } from 'antd';
 import './style.css'
-import { fetchNewsList } from '../../store/slices/news-listSlices';
+import {fetchNewsList} from "../../store/actions/news";
 
 const NewsList: React.FC = () => {   
      const [search, setSearch] = useState("");
