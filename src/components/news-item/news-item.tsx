@@ -40,10 +40,9 @@ const NewsItem: FC<TProps> = ({ articles }) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch();
 
-  const handlerAddToRead = (title: string) => {
+  const handlerAddToRead = (article: TNewsItem["title"]) => {
     return (e: any) => {
       e.stopPropagation()
-      dispatch(addToReading(title))
       notification.open({
         message: 'Article added to reading list :)',
         icon: <SmileOutlined style={{ color: '#108ee9' }} />,
@@ -59,6 +58,11 @@ const NewsItem: FC<TProps> = ({ articles }) => {
     }
   }
 
+  const handlerOpen = (article: TNewsItem) => () => {
+    navigate(`/${article.title}`)
+    dispatch(addToReading(article))
+  }
+
   useEffect(() => {
     handlerPage(filter.current)
   }, [])
@@ -72,9 +76,7 @@ const NewsItem: FC<TProps> = ({ articles }) => {
             key={index}
             className="site-card-wrapper"
             style={{ backgroundImage: `url(${article.urlToImage})` }}
-            onClick={(_e: any) => {
-              navigate(`/${article.title}`)
-            }}>
+            onClick={handlerOpen(article)}>
               <Row gutter={1} style={{ display: 'block' }}>
                 <Col >
                   <Card className='card-news' title={article.title} bordered={false} >
