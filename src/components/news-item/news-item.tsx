@@ -1,10 +1,10 @@
 import { FC, useDeferredValue, useEffect, useState } from "react";
 import { DeleteOutlined, SmileOutlined } from '@ant-design/icons';
-import { Button, Card, Col, notification, PageHeader, Pagination, Popover, Row } from 'antd';
+import { Button, Card, Col, notification, Pagination, Popover, Row } from 'antd';
 import { TNewsItem } from '../../type/type';
 import './style.css'
 import { useNavigate } from "react-router-dom";
-import { removeNews, addToReading } from '../../store/slices/news-listSlices';
+import { removeNewsItem, openArticle } from '../../store/slices/news-listSlices';
 import { useAppDispatch } from "../../hook/redux-hooks";
 
 
@@ -40,9 +40,11 @@ const NewsItem: FC<TProps> = ({ articles }) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch();
 
-  const handlerAddToRead = (article: TNewsItem["title"]) => {
+  const handlerAddToRead = (title:string) => {
     return (e: any) => {
       e.stopPropagation()
+      const arr = articles.find((el: any) => { return el.title === title });
+      localStorage.setItem(title, JSON.stringify(arr))
       notification.open({
         message: 'Article added to reading list :)',
         icon: <SmileOutlined style={{ color: '#108ee9' }} />,
@@ -54,13 +56,13 @@ const NewsItem: FC<TProps> = ({ articles }) => {
   const handlerRemove = (title: string) => {
     return (e: any) => {
       e.stopPropagation()
-      dispatch(removeNews(title))
+      dispatch(removeNewsItem(title))
     }
   }
 
   const handlerOpen = (article: TNewsItem) => () => {
     navigate(`/${article.title}`)
-    dispatch(addToReading(article))
+    dispatch(openArticle(article))
   }
 
   useEffect(() => {

@@ -20,12 +20,11 @@ const NewsListSlice = createSlice({
   name: 'news-list',
   initialState: initialState,
   reducers: {
-    removeNews(state, action) {
+    removeNewsItem(state, action) {
       state.articles = state.articles.filter((todo: any) => todo.title !== action.payload);
     },
-    addToReading(state, action: {payload: TNewsItem}) {
+    openArticle(state, action: {payload: TNewsItem}) {
       state.article = action.payload
-      // localStorage.setItem(payload, JSON.stringify(arr))
     }
   },
   extraReducers: {
@@ -38,12 +37,11 @@ const NewsListSlice = createSlice({
       state.articles = action.payload;
     },
     [fetchNewsList.rejected.type]: (state, action) => {
-      // state.status = 'rejected';
       state.error = action.payload;
     },
   }
 })
 
-export const { removeNews, addToReading } = NewsListSlice.actions
+export const { removeNewsItem, openArticle } = NewsListSlice.actions
 
 export default NewsListSlice.reducer;
