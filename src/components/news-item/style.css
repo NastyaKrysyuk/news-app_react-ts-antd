@@ -27,13 +27,19 @@
   margin: 2%;
 }
 
-.btn-del{
 
+.pagination {
+  width: 100%;
+  text-align: center;
 }
-.castom-card .ant-card-head {
-  color: red;
-}
+
 @media (min-width: 767px) {
+  .site-card-wrapper{
+    width: 40%;
+  }
+}
+
+@media (min-width: 1190px) {
   .site-card-wrapper{
     width: 30%;
   }

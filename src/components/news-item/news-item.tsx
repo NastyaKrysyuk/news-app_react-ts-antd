@@ -40,7 +40,7 @@ const NewsItem: FC<TProps> = ({ articles }) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch();
 
-  const handlerAddToRead = (title:string) => {
+  const handlerAddToRead = (title: string) => {
     return (e: any) => {
       e.stopPropagation()
       const arr = articles.find((el: any) => { return el.title === title });
@@ -69,7 +69,7 @@ const NewsItem: FC<TProps> = ({ articles }) => {
     handlerPage(filter.current)
   }, [])
 
-  
+
   return (
     <>
       {
@@ -80,17 +80,17 @@ const NewsItem: FC<TProps> = ({ articles }) => {
             className="castom-card site-card-wrapper"
             style={{ backgroundImage: `url(${article.urlToImage})` }}
             onClick={handlerOpen(article)}>
-              <Row gutter={1} style={{ display: 'block' }}>
-                <Col >
-                  <Card className='card-news' title={article.title} bordered={false} >
-                    {article.description}
-                  </Card>
-                </Col>
-              </Row>
-              <Button className='btn-more' type="primary" shape="round" 
+            <Row gutter={1} style={{ display: 'block' }}>
+              <Col >
+                <Card className='card-news' title={article.title} bordered={false} >
+                  {article.description}
+                </Card>
+              </Col>
+            </Row>
+            <Button className='btn-more' type="primary" shape="round"
               onClick={handlerAddToRead(article.title)}>
-                add to reading list
-              </Button>
+              add to reading list
+            </Button>
             <Popover content='Hide'>
               <Button type="primary" shape="round" className='btn-del'
                 onClick={handlerRemove(article.title)}>
@@ -100,11 +100,14 @@ const NewsItem: FC<TProps> = ({ articles }) => {
           </div>
         ))
       }
-      <Pagination
-        current={filter.current}
-        onChange={handlerPage}
-        total={values?.length}
-      />
+      <div className="pagination">
+        <Pagination
+          current={filter.current}
+          onChange={handlerPage}
+          total={values?.length}
+        />
+      </div>
+
     </>
 
   )
