@@ -26,8 +26,6 @@ const ReadingListPage = () => {
       } />}
       {arr && <NewsItem articles={arr} />}
     </div>
-
-
   )
 }
 

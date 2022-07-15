@@ -1,0 +1,7 @@
+
+
+@media (min-width: 767px) {
+  .wrapper-news-list .ant-form{
+    width: 50%;
+  }
+}

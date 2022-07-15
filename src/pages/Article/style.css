@@ -10,9 +10,33 @@
   margin: 1rem;
 }
 
-.description{
+.article .ant-card .description {
   text-align: center;
   width: 70%;
   margin: auto;
   font-size: 2rem;
+}
+
+.article .ant-typography {
+  font-size: 1rem;
+}
+
+.article .ant-card {
+  width: 100%;
+  margin: 3rem auto;
+  border-radius: 15px
+}
+
+@media (min-width: 1190px) {
+  .article .ant-card{
+  width: 70%;
+  margin: 3rem auto;
+  }
+  .article .ant-typography {
+    font-size: 2rem;
+  }
+  .article .pablish-date >span{
+  font-size: 1rem;
+  }
+  
 }
