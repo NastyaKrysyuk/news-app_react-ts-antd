@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SearchComponent from '../controls/serch';
 import FilterComponent from '../controls/filter';
 import { TNewsItem } from '../../type/type';
-import NewsItem from '../news-item/news-item';
+import NewsItems from '../news-items/news-items';
 
 import { useAppSelector } from '../../hook/redux-hooks';
 import { useAppDispatch } from '../../hook/redux-hooks';
@@ -38,7 +38,7 @@ const NewsList: React.FC = () => {
             {articles &&
                 !error &&
                 !loading &&
-                <NewsItem articles={filterBySearch(articles, search)}/>
+                <NewsItems articles={filterBySearch(articles, search)}/>
             }
         </div>
     )

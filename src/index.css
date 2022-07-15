@@ -12,12 +12,20 @@ body {
   margin-top: 8rem;
 }
 
-.caption-form{
+.caption-form {
   text-align: center;
 }
-.img-content{
+
+.img-content {
+  display: none;
   width: 500px;
   height: 500px;
   background-size: cover;
   background-image: url(./images/lady-employee-doing-video-meeting-2194238.png);
+}
+
+@media (min-width: 845px) {
+  .img-content {
+    display: block;
+  }
 }

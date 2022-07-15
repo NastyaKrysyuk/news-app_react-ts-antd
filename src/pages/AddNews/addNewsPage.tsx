@@ -22,8 +22,10 @@ const validateMessages = {
 /* eslint-enable no-template-curly-in-string */
 const AddNewsPage=()=>{
   const onFinish = (values: any) => {
+    values.publishAt=values.publishAt._d.toISOString()
     console.log(values);
   };
+  
 return (
   <div className='wrapper-news-list'>
   <Title>Add news:</Title>
@@ -41,7 +43,7 @@ return (
       </Form.Item>
 
       <Form.Item name={'publishAt'} label="Date" rules={[{ required: true }]}>
-        <DatePicker />
+        <DatePicker/>
       </Form.Item>
       
       <Form.Item name={ 'url'} label="Link article" rules={[{ required: true }]}>

@@ -55,26 +55,6 @@ const FormComponent: FC<FormProps> = ({ title, handleClick }) => {
         </Button>
       </Form.Item>
     </Form>
-
-    // <div>
-    //     <input
-    //         type="email"
-    //         value={email}
-    //         onChange={(e) => setEmail(e.target.value)}
-    //         placeholder="email"
-    //     />
-    //     <input
-    //         type="password"
-    //         value={pass}
-    //         onChange={(e) => setPass(e.target.value)}
-    //         placeholder="password"
-    //     />
-    //     <button
-    //         onClick={() => handleClick(email, pass)}
-    //     >
-    //         {title}
-    //     </button>
-    // </div>
   )
 }
 
