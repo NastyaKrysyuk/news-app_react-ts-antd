@@ -1,4 +1,7 @@
 import { Button, DatePicker, Form, Input, InputNumber, Typography } from 'antd';
+import { collection, addDoc } from "firebase/firestore";
+import { useState } from 'react';
+import { db } from '../../firebase';
 import './style.css'
 
 const { Title } = Typography;
@@ -19,53 +22,71 @@ const validateMessages = {
     range: '${label} must be between ${min} and ${max}',
   },
 };
-/* eslint-enable no-template-curly-in-string */
-const AddNewsPage=()=>{
-  const onFinish = (values: any) => {
-    values.publishAt=values.publishAt._d.toISOString()
-    console.log(values);
-  };
+
+// const initialValues={
+//   title:'title',
+//   description:'description',
+//   author:'author'
   
-return (
-  <div className='wrapper-news-list'>
-  <Title>Add news:</Title>
-    <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
-      <Form.Item name={ 'title'} label="Title" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
-     
-      <Form.Item name={ 'description'} label="Description" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
+// }
+/* eslint-enable no-template-curly-in-string */
+const AddNewsPage = () => {
 
-      <Form.Item name={'author'} label="Author" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
+  const [form] = Form.useForm();
 
-      <Form.Item name={'publishAt'} label="Date" rules={[{ required: true }]}>
-        <DatePicker/>
-      </Form.Item>
-      
-      <Form.Item name={ 'url'} label="Link article" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
+  const onFinish = async (values: any) => {
+    values.publishAt = values.publishAt._d.toISOString()
+    try {
+    const docRef= await addDoc(collection(db, "articles"), {
+        values
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+    form.resetFields();
+  };
 
-      <Form.Item name={'urlToImage'} label="Link image" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
+  return (
+    <div className='wrapper-news-list'>
+      <Title>Add news:</Title>
+      <Form {...layout} form={form} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages} >
+        <Form.Item name={'title'} label="Title" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
 
-      <Form.Item name={ 'content'} label="Content">
-        <Input.TextArea />
-      </Form.Item>
+        <Form.Item name={'description'} label="Description" rules={[{ required: true }]}>
+          <Input/>
+        </Form.Item>
+
+        <Form.Item name={'author'} label="Author" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+
+        <Form.Item name={'publishAt'} label="Date" rules={[{ required: true }]}>
+          <DatePicker />
+        </Form.Item>
+
+        <Form.Item name={'url'} label="Link article" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+
+        <Form.Item name={'urlToImage'} label="Link image" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+
+        <Form.Item name={'content'} label="Content">
+          <Input.TextArea />
+        </Form.Item>
 
 
-      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 10 }}>
-        <Button type="primary" htmlType="submit" >
-        Post news
-        </Button>
-      </Form.Item>
-    </Form>
-  </div>
-)
+        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 10 }}>
+          <Button type="primary" htmlType="submit" >
+            Post news
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
+  )
 }
 export default AddNewsPage
