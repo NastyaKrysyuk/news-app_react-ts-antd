@@ -1,7 +1,16 @@
-
+.ant-modal-confirm-body .site-card-wrapper{
+  width: 100%;
+  margin: 0;
+}
 
 @media (min-width: 767px) {
   .wrapper-news-list .ant-form{
     width: 50%;
   }
+}
+
+@media (min-width: 767px){
+  .ant-modal-confirm-body .site-card-wrapper {
+    width: 100%;
+}  
 }

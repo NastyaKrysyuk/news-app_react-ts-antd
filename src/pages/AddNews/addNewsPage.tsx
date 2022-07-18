@@ -1,11 +1,13 @@
-import { Button, DatePicker, Form, Input, InputNumber, Typography } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { Button, DatePicker, Form, Input, InputNumber, Modal, Typography } from 'antd';
 import { collection, addDoc } from "firebase/firestore";
 import { useState } from 'react';
+import NewsItem from '../../components/news-item';
 import { db } from '../../firebase';
 import './style.css'
 
 const { Title } = Typography;
-
+const { confirm } = Modal;
 const layout = {
   labelCol: { span: 10 },
   wrapperCol: { span: 16 },
@@ -27,7 +29,7 @@ const validateMessages = {
 //   title:'title',
 //   description:'description',
 //   author:'author'
-  
+
 // }
 /* eslint-enable no-template-curly-in-string */
 const AddNewsPage = () => {
@@ -37,7 +39,7 @@ const AddNewsPage = () => {
   const onFinish = async (values: any) => {
     values.publishAt = values.publishAt._d.toISOString()
     try {
-    const docRef= await addDoc(collection(db, "articles"), {
+      const docRef = await addDoc(collection(db, "articles"), {
         values
       });
       console.log("Document written with ID: ", docRef.id);
@@ -47,16 +49,34 @@ const AddNewsPage = () => {
     form.resetFields();
   };
 
+
+  const showPromiseConfirm = (values: any) => {
+    confirm({
+      title: 'Preview',
+      icon: <ExclamationCircleOutlined />,
+      content: <NewsItem article={values} />,
+      className: 'modal',
+      onOk() {
+        return onFinish(values)
+      }
+    });
+  };
+
   return (
     <div className='wrapper-news-list'>
       <Title>Add news:</Title>
-      <Form {...layout} form={form} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages} >
+      <Form 
+      {...layout}
+       form={form}
+      name="nest-messages" 
+      onFinish={showPromiseConfirm}
+      validateMessages={validateMessages}>
         <Form.Item name={'title'} label="Title" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
 
         <Form.Item name={'description'} label="Description" rules={[{ required: true }]}>
-          <Input/>
+          <Input />
         </Form.Item>
 
         <Form.Item name={'author'} label="Author" rules={[{ required: true }]}>
@@ -78,7 +98,6 @@ const AddNewsPage = () => {
         <Form.Item name={'content'} label="Content">
           <Input.TextArea />
         </Form.Item>
-
 
         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 10 }}>
           <Button type="primary" htmlType="submit" >

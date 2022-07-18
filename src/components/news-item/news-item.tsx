@@ -6,7 +6,7 @@ import { TNewsItem } from '../../type/type';
 
 type TProps = {
   article: TNewsItem,
-  handlerOpen: any,
+  handlerOpen?: any,
   handlerAddToRead?: any,
   handlerRemove?: any
 }
@@ -15,7 +15,7 @@ const NewsItem: FC<TProps> = ({ article, handlerOpen, handlerAddToRead, handlerR
     <div
       className="castom-card site-card-wrapper"
       style={{ backgroundImage: `url(${article.urlToImage})` }}
-      onClick={handlerOpen(article)}>
+      onClick={handlerOpen ? handlerOpen(article):null}>
       <Row gutter={1} style={{ display: 'block' }}>
         <Col >
           <Card className='card-news' title={article.title} bordered={false} >
