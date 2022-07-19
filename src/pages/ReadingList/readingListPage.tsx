@@ -37,7 +37,7 @@ const ReadingListPage = () => {
               </Button></div>
           </>
         } />}
-        <NewsItems articles={arr}/>
+        { arr && <NewsItems articles={arr}/>}
         {/* {arr.map((article, index) => {
           <NewsItem
             key={index}

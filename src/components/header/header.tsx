@@ -9,7 +9,7 @@ import { removeUser } from "../../store/slices/authSlices";
 const Header = () => {
   const dispatch = useAppDispatch();
   const auth = getAuth();
-  const { isAuth, email } = useAuth();
+  const { isAuth, email, admins } = useAuth();
   return (
     <PageHeader
       className="site-page-header"
@@ -21,7 +21,7 @@ const Header = () => {
           <Badge count={localStorage.length} size='small'>
             <NavLink to='/readinglist'>Reading list</NavLink>
           </Badge>
-          <NavLink to='/addnews'>Add news</NavLink>
+          {email && !admins.indexOf(email) && <NavLink to='/addnews'>Add news</NavLink>}
           <Button type="link" className="btn-logout"
             onClick={() => {
               dispatch(removeUser())
