@@ -9,7 +9,7 @@ type TState = {
 const initialState: TState = {
     email: null,
     id: null,
-    admins: ['nkrysyuk@inbox.ru']
+    admins: ['nkrysyuk@inbox.ru', 'admin@inbox.ru']
 };
 
 const authUserSlices = createSlice({

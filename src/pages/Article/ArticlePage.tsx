@@ -1,17 +1,29 @@
 import { useAppSelector } from "../../hook/redux-hooks";
 import { Button, Card, Image, Typography } from 'antd';
 import './style.css'
-import { LinkOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, LinkOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const { Text, Title } = Typography;
 
 const ArticlePage = () => {
+  const navigate = useNavigate();
 
   const article = useAppSelector((state) => state.newsList.article)
 
+  const handlerBack = (_e: any) => {
+    navigate(-1)
+  }
+
   return (
     <article className="article">
-      <Card title={article?.title} bordered={false} >
+      <Card title={
+        <div>
+          <span className="arrow-back">
+            <ArrowLeftOutlined onClick={handlerBack} />
+          </span>{article?.title}
+        </div>
+      } bordered={false} >
         <Title >{article?.description}</Title>
         <div className="pablish-date">
           <Text type="secondary" italic={true} >by {article?.author}</Text><br />
