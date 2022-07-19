@@ -37,7 +37,7 @@ const AddNewsPage = () => {
   const [form] = Form.useForm();
 
   const onFinish = async (values: any) => {
-    values.publishAt = values.publishAt._d.toISOString()
+    values.publishedAt = values.publishedAt._d.toISOString()
     try {
       const docRef = await addDoc(collection(db, "articles"), {
         values
@@ -83,7 +83,7 @@ const AddNewsPage = () => {
           <Input />
         </Form.Item>
 
-        <Form.Item name={'publishAt'} label="Date" rules={[{ required: true }]}>
+        <Form.Item name={'publishedAt'} label="Date" rules={[{ required: true }]}>
           <DatePicker />
         </Form.Item>
 

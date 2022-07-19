@@ -13,7 +13,6 @@ const FilterComponent = () => {
   };
   
   return (
-    
     <Select onChange={handleChange} defaultValue={{ value: 'popularity'}} style={{ width: '50%' }} >
       <Option value="relevancy">default</Option>
       <Option value="popularity">by popularity</Option>
