@@ -1,9 +1,15 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+type TState = {
+    email: string | null,
+    id: string | null,
+    admins: string[]
+}
+
+const initialState: TState = {
     email: null,
-    token: null,
     id: null,
+    admins: ['nkrysyuk@inbox.ru']
 };
 
 const authUserSlices = createSlice({
@@ -12,17 +18,15 @@ const authUserSlices = createSlice({
     reducers: {
         setUser(state, action) {
             state.email = action.payload.email;
-            state.token = action.payload.token;
             state.id = action.payload.id;
         },
         removeUser(state) {
             state.email = null;
-            state.token = null;
             state.id = null;
         },
     },
 });
 
-export const {setUser, removeUser} = authUserSlices.actions;
+export const { setUser, removeUser } = authUserSlices.actions;
 
 export default authUserSlices.reducer;

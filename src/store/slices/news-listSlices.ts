@@ -1,15 +1,15 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import {fetchNewsList} from "../actions/news";
 import {TNewsItem} from "../../type/type";
 
 
-export type TNewsList = {
+ type TState = {
   articles: TNewsItem[] | [],
   article: TNewsItem | null,
   loading: boolean,
   error: any,
 }
-const initialState: TNewsList = {
+const initialState: TState = {
   articles: [],
   article: null,
   loading: false,
@@ -21,7 +21,7 @@ const NewsListSlice = createSlice({
   initialState: initialState,
   reducers: {
     removeNewsItem(state, action) {
-      state.articles = state.articles.filter((todo: any) => todo.title !== action.payload);
+      state.articles = state.articles.filter((todo: TNewsItem) => todo.title !== action.payload);
     },
     openArticle(state, action: {payload: TNewsItem}) {
       state.article = action.payload
