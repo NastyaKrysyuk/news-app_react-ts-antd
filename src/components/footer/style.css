@@ -1,0 +1,11 @@
+.footer{
+  background-color: rgba(212, 193, 22, 0.795);
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer-content{
+  font-size: 0.7rem;
+}

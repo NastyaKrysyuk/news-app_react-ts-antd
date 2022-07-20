@@ -60,7 +60,7 @@ const NewsItems: FC<TProps> = ({ articles }) => {
     }
   }
 
-  const handlerOpen = (article: TNewsItem) => () => {
+  const handlerOpen = (article: TNewsItem) => (_e: any) => {
     navigate(`/${article.title}`)
     dispatch(openArticle(article))
   }
@@ -73,13 +73,13 @@ const NewsItems: FC<TProps> = ({ articles }) => {
     <>
       {
         values.map((article: TNewsItem, index: number) => (
-          index >= filter.minIndex && index < filter.maxIndex &&
-          <NewsItem
-          key={index}
-          article={article} 
-          handlerOpen={handlerOpen}
-          handlerAddToRead={handlerAddToRead}
-          handlerRemove={handlerRemove}
+          index >= filter.minIndex && index < filter.maxIndex
+          && <NewsItem
+            key={index}
+            article={article}
+            handlerOpen={handlerOpen}
+            handlerAddToRead={handlerAddToRead}
+            handlerRemove={handlerRemove}
           />
         ))
       }
@@ -90,9 +90,7 @@ const NewsItems: FC<TProps> = ({ articles }) => {
           total={values?.length}
         />
       </div>
-
     </>
-
   )
 }
 

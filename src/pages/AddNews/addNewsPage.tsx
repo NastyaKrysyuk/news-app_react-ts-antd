@@ -49,7 +49,6 @@ const AddNewsPage = () => {
     form.resetFields();
   };
 
-
   const showPromiseConfirm = (values: any) => {
     confirm({
       title: 'Preview',
