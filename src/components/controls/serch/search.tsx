@@ -1,6 +1,12 @@
 import { Input } from "antd";
+import { FC, SyntheticEvent } from "react";
 
-const SearchComponent = ({ handleSearch, search }: { handleSearch: any, search: string }) => {
+type TProps = {
+  handleSearch: (e: SyntheticEvent) => void,
+  search: string
+}
+
+const SearchComponent: FC<TProps> = ({ handleSearch, search }) => {
   const { Search } = Input;
 
   return (

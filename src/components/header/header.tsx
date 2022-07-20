@@ -1,47 +1,45 @@
-import { Badge, Button, PageHeader } from "antd";
-import { Auth, getAuth } from "firebase/auth";
-import './style.css'
-import { NavLink, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../hook/redux-hooks";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hook/use-auth";
-import { removeUser } from "../../store/slices/authSlices";
+import { useState } from "react";
+import Navigation from "../navigation";
+import { PageHeader } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
+import './style.css'
 
 const Header = () => {
-  const dispatch = useAppDispatch();
-  
-  const auth = getAuth();
-  const { isAuth, email, admins } = useAuth();
+  const [show, setShow] = useState<boolean>(false)
+  const { isAuth } = useAuth();
   const navigate = useNavigate();
 
   const handlerClickHome = (_e: any) => {
     navigate('/')
   }
 
+  const handlerClickMenu = (_e: any) => {
+    setShow(!show)
+  }
+
   return (
-    <PageHeader
-      className="site-page-header"
-      title={
-        <span className="logo" onClick={handlerClickHome}>
-          ART
-        </span>
-      }
-      subTitle="news">
-      {isAuth &&
-        <nav className="navigation">
-          <NavLink to='/'>Home</NavLink>
-          <Badge count={localStorage.length} size='small'>
-            <NavLink to='/readinglist'>Reading list</NavLink>
-          </Badge>
-          {email && !admins.indexOf(email) && <NavLink to='/addnews'>Add news</NavLink>}
-          <Button type="link" className="btn-logout"
-            onClick={() => {
-              dispatch(removeUser())
-              auth.signOut()
-            }}
-          >Log out from {email}</Button>
-        </nav>
-      }
-    </PageHeader>
+    <>
+      {isAuth
+        && <Navigation
+          className={show ? 'mobile-navigation active' : 'mobile-navigation'}
+          handlerClickMenu={handlerClickMenu} />}
+      <PageHeader
+        className="site-page-header"
+        title={
+          <>
+            <MenuOutlined onClick={handlerClickMenu} />
+            <span className="logo" onClick={handlerClickHome}>
+              ART
+            </span>
+          </>
+        }
+        subTitle="news">
+        {isAuth
+          && <Navigation className="navigation"/>}
+      </PageHeader>
+    </>
   )
 }
 

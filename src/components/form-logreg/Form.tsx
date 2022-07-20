@@ -1,16 +1,14 @@
 import { FC, useState } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
-import React from 'react';
+import { Button, Form, Input } from 'antd';
 
-type FormProps= {
+type TProps= {
   title: string;
   handleClick: (email: string, pass: string) => void;
 }
 
-const FormComponent: FC<FormProps> = ({ title, handleClick }) => {
+const FormComponent: FC<TProps> = ({ title, handleClick }) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-
 
   const onFinish = (values: any) => {
     console.log('Success:', values);
@@ -19,12 +17,12 @@ const FormComponent: FC<FormProps> = ({ title, handleClick }) => {
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
+  
   return (
     <Form
       name="basic"
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 16 }}
-      initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
@@ -43,10 +41,6 @@ const FormComponent: FC<FormProps> = ({ title, handleClick }) => {
         rules={[{ required: true, message: 'Please input your password!' }]}
       >
         <Input.Password  onChange={(e:any) => setPass(e.target.value)} value={pass}/>
-      </Form.Item>
-
-      <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-        <Checkbox>Remember me</Checkbox>
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

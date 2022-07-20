@@ -8,16 +8,14 @@ import { useAppSelector } from '../../hook/redux-hooks';
 import { useAppDispatch } from '../../hook/redux-hooks';
 import { Spin } from 'antd';
 import './style.css'
-import {fetchNewsList} from "../../store/actions/news";
+import { fetchNewsList } from "../../store/actions/news";
 
-const NewsList: React.FC = () => {   
-     const [search, setSearch] = useState("");
-
-   // const { loading, error, articles, setArticles, filter, handlerPage } = useNewsList()
-    const {articles ,loading, error } = useAppSelector(state =>state.newsList );
+const NewsList: React.FC = () => {
+    const [search, setSearch] = useState("");
+    const { articles, loading, error } = useAppSelector(state => state.newsList);
     const dispatch = useAppDispatch();
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(fetchNewsList('popularity'));
     }, [])
 
@@ -38,7 +36,7 @@ const NewsList: React.FC = () => {
             {articles &&
                 !error &&
                 !loading &&
-                <NewsItems articles={filterBySearch(articles, search)}/>
+                <NewsItems articles={filterBySearch(articles, search)} />
             }
         </div>
     )
