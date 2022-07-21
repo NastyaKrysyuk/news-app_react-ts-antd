@@ -21,6 +21,10 @@
   font-weight: bold;
 }
 
+.navigation a.active{
+  color: gray;
+} 
+
 .btn-logout {
   font-weight: 300;
   color: lightslategrey;
