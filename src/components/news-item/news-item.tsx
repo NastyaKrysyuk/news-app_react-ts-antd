@@ -1,14 +1,16 @@
 import { DeleteOutlined } from '@ant-design/icons';
-import { Button, Card, Col, notification, Pagination, Popover, Row } from 'antd';
-import { FC, SyntheticEvent } from 'react';
+import { Button, Card, Col, notification, Pagination, Popover, Row, Skeleton } from 'antd';
+import { FC, SyntheticEvent, useEffect } from 'react';
+import { useAppSelector } from '../../hook/redux-hooks';
 import { TNewsItem } from '../../type/type';
 
+const { Meta } = Card;
 
 type TProps = {
   article: TNewsItem,
   handlerOpen?: (article: TNewsItem) => (e: SyntheticEvent) => void,
   handlerAddToRead?: (title: string) => (e: SyntheticEvent) => void,
-  handlerRemove?:  (title: string) => (e: SyntheticEvent) => void
+  handlerRemove?: (title: string) => (e: SyntheticEvent) => void
 }
 const NewsItem: FC<TProps> = ({ article, handlerOpen, handlerAddToRead, handlerRemove }) => {
   return (
@@ -16,13 +18,7 @@ const NewsItem: FC<TProps> = ({ article, handlerOpen, handlerAddToRead, handlerR
       className="castom-card site-card-wrapper"
       style={{ backgroundImage: `url(${article.urlToImage})` }}
       onClick={handlerOpen && handlerOpen(article)}>
-      <Row gutter={1} style={{ display: 'block' }}>
-        <Col >
-          <Card className='card-news' title={article.title} bordered={false} >
-            {article.description}
-          </Card>
-        </Col>
-      </Row>
+      <Meta className='card-news' title={article.title} description={article.description} />
       {handlerAddToRead && <Button className='btn-more' type="primary" shape="round"
         onClick={handlerAddToRead(article.title)}>
         add to reading list

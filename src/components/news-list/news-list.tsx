@@ -36,7 +36,7 @@ const NewsList: React.FC = () => {
             {articles &&
                 !error &&
                 !loading &&
-                <NewsItems articles={filterBySearch(articles, search)} />
+                <NewsItems articles={filterBySearch(articles, search)}  />
             }
         </div>
     )

@@ -38,7 +38,8 @@ const ReadingListPage = () => {
           </>
         } />}
         { arr && <NewsItems articles={arr}/>}
-        {/* {arr.map((article, index) => {
+        {console.log(arr)}
+        {/* {arr && arr.map((article, index) => {
           <NewsItem
             key={index}
             article={article}
