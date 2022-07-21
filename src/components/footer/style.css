@@ -1,10 +1,13 @@
 .footer{
+  position: absolute;
   background-color: rgba(212, 193, 22, 0.795);
-  height: 100px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  
 }
 .footer-content{
   font-size: 0.7rem;
