@@ -1,18 +1,45 @@
-import { DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined, SmileOutlined } from '@ant-design/icons';
 import { Button, Card, Col, notification, Pagination, Popover, Row, Skeleton } from 'antd';
-import { FC, SyntheticEvent, useEffect } from 'react';
-import { useAppSelector } from '../../hook/redux-hooks';
+import { FC, memo, SyntheticEvent, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hook/redux-hooks';
+import { addToRead, openArticle, removeNewsItem } from '../../store/slices/news-listSlices';
 import { TNewsItem } from '../../type/type';
 
 const { Meta } = Card;
 
 type TProps = {
   article: TNewsItem,
-  handlerOpen?: (article: TNewsItem) => (e: SyntheticEvent) => void,
-  handlerAddToRead?: (title: string) => (e: SyntheticEvent) => void,
-  handlerRemove?: (title: string) => (e: SyntheticEvent) => void
 }
-const NewsItem: FC<TProps> = ({ article, handlerOpen, handlerAddToRead, handlerRemove }) => {
+const NewsItem: FC<TProps> = ({ article}) => {
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch();
+
+  const handlerAddToRead = (title: string) => {
+    return (e: any) => {
+      e.stopPropagation()
+      dispatch(addToRead(title))
+      notification.open({
+        message: 'Article added to reading list :)',
+        icon: <SmileOutlined style={{ color: '#108ee9' }} />,
+        placement: 'top',
+      });
+    }
+  }
+
+  const handlerRemove = (title: string) => {
+    return (e: any) => {
+      e.stopPropagation()
+      dispatch(removeNewsItem(title))
+    }
+  }
+
+  const handlerOpen = (article: TNewsItem) => (_e: any) => {
+    navigate(`/${article.title}`)
+    dispatch(openArticle(article))
+  }
+
+
   return (
     <div
       className="castom-card site-card-wrapper"
@@ -33,4 +60,4 @@ const NewsItem: FC<TProps> = ({ article, handlerOpen, handlerAddToRead, handlerR
   )
 }
 
-export default NewsItem
+export default  NewsItem

@@ -3,26 +3,19 @@ import NewsItems from "../../components/news-items";
 import { TNewsItem } from "../../type/type";
 import './style.css'
 import NewsItem from '../../components/news-item'
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../hook/redux-hooks";
-import { openArticle } from "../../store/slices/news-listSlices";
 
 const { Title } = Typography;
 
 const ReadingListPage = () => {
-  let arr: [] | TNewsItem[] = []
-  const keys: string[] = Object.keys(localStorage)
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch();
-  keys.map((key: string | null) => {
-    //@ts-ignore
-    arr.push(JSON.parse(localStorage.getItem(key)))
-  })
 
-  const handlerOpen = (article: TNewsItem) => () => {
-    navigate(`/${article.title}`)
-    dispatch(openArticle(article))
-  }
+  let arr: TNewsItem[] = []
+  const keys: string[] = Object.keys(localStorage)
+  
+  keys && keys.map((key: string ) => {
+    let articleJSON:any= localStorage.getItem(key)
+    let articlePars:TNewsItem=JSON.parse(articleJSON)
+    arr.push(articlePars)
+  })
 
   return (
     <div className='wrapper-news-list'>
@@ -43,7 +36,6 @@ const ReadingListPage = () => {
           <NewsItem
             key={index}
             article={article}
-            handlerOpen={handlerOpen}
           />
         })
         } */}
