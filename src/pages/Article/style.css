@@ -9,7 +9,9 @@
   bottom: 0;
   margin: 1rem;
 }
-
+.article .ant-card-body{
+  padding: 70px;
+}
 .article .ant-card .description {
   text-align: center;
   width: 70%;

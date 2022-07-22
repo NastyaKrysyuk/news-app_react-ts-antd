@@ -14,6 +14,7 @@ const NewsList: React.FC = () => {
     const [search, setSearch] = useState("");
     const { articles, loading, error } = useAppSelector(state => state.newsList);
     const dispatch = useAppDispatch();
+    console.log(articles)
 
     useEffect(() => {
         dispatch(fetchNewsList('popularity'));

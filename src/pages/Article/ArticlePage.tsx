@@ -10,7 +10,6 @@ const ArticlePage = () => {
   const navigate = useNavigate();
 
   const article = useAppSelector((state) => state.newsList.article)
-
   const handlerBack = (_e: any) => {
     navigate(-1)
   }
