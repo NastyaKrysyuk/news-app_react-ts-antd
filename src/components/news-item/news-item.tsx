@@ -14,7 +14,7 @@ type TProps = {
 const NewsItem: FC<TProps> = ({ article}) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch();
-
+  
   const handlerAddToRead = (title: string) => {
     return (e: any) => {
       e.stopPropagation()
@@ -46,10 +46,12 @@ const NewsItem: FC<TProps> = ({ article}) => {
       style={{ backgroundImage: `url(${article.urlToImage})` }}
       onClick={handlerOpen && handlerOpen(article)}>
       <Meta className='card-news' title={article.title} description={article.description} />
-      {handlerAddToRead && <Button className='btn-more' type="primary" shape="round"
-        onClick={handlerAddToRead(article.title)}>
-        add to reading list
-      </Button>}
+      {handlerAddToRead && (
+        <Button className='btn-more' type="primary" shape="round"
+          onClick={handlerAddToRead(article.title)}>
+          add to reading list
+        </Button>
+      )}
       {handlerRemove && <Popover content='Hide'>
         <Button type="primary" shape="round" className='btn-del'
           onClick={handlerRemove(article.title)}>

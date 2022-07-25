@@ -8,7 +8,7 @@ const { Title } = Typography;
 
 const ReadingListPage = () => {
 
-  let arr: TNewsItem[] = []
+  const arr: TNewsItem[] = []
   const keys: string[] = Object.keys(localStorage)
   
   keys && keys.map((key: string ) => {
@@ -30,15 +30,17 @@ const ReadingListPage = () => {
               </Button></div>
           </>
         } />}
-        { arr && <NewsItems articles={arr}/>}
+        {/* { arr && <NewsItems articles={arr}/>} */}
         {console.log(arr)}
-        {/* {arr && arr.map((article, index) => {
-          <NewsItem
-            key={index}
-            article={article}
-          />
+        {arr && arr.map((article, index) => {
+          return (
+            <NewsItem
+              key={index}
+              article={article}
+            />
+          )
         })
-        } */}
+        }
       </>
     </div>
   )

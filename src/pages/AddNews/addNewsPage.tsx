@@ -50,10 +50,12 @@ const AddNewsPage = () => {
   };
 
   const showPromiseConfirm = (values: any) => {
+    console.log('asd');
+    
     confirm({
       title: 'Preview',
       icon: <ExclamationCircleOutlined />,
-      content: <NewsItem article={values} />,
+      // content: <NewsItem article={values} />,
       className: 'modal',
       onOk() {
         return onFinish(values)
