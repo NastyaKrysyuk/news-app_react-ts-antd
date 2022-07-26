@@ -35,6 +35,7 @@ const Login = () => {
                     id: user.uid,
                 }));
                 navigate('/', { replace: true });
+                if(!localStorage.getItem('readingList')) localStorage.setItem('readingList','[]')
             })
             .catch(() => alert('Invalid user!'))
     }

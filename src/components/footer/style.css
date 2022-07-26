@@ -1,11 +1,13 @@
 .footer{
   background-color: rgba(212, 193, 22, 0.795);
-  height: 80px;
+  height: 44px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+  position: fixed;
+  bottom: 0;
   
 }
 .footer-content{

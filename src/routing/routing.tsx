@@ -27,6 +27,7 @@ export const Routes: TRoute[] = [
 function RoutesCore() {
   return useRoutes(Routes)
 }
+
 function AppRouting() {
   const navigate = useNavigate()
   const { isAuth } = useAuth();
