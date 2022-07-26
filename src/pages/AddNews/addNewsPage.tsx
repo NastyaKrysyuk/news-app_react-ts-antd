@@ -3,6 +3,7 @@ import { Button, DatePicker, Form, Input, InputNumber, Modal, Typography } from 
 import { collection, addDoc } from "firebase/firestore";
 import { useState } from 'react';
 import NewsItem from '../../components/news-item';
+import NewsItems from '../../components/news-items';
 import { db } from '../../firebase';
 import './style.css'
 

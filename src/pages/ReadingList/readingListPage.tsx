@@ -1,27 +1,30 @@
 import { Button, Empty, Typography } from "antd";
-import NewsItems from "../../components/news-items";
 import { TNewsItem } from "../../type/type";
 import './style.css'
 import NewsItem from '../../components/news-item'
+import { useAppDispatch } from "../../hook/redux-hooks";
+import { openArticle, setCount } from "../../store/slices/news-listSlices";
+import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 
 const ReadingListPage = () => {
 
-  let arr: TNewsItem[] = []
-  const keys: string[] = Object.keys(localStorage)
-  
-  keys && keys.map((key: string ) => {
-    let articleJSON:any= localStorage.getItem(key)
-    let articlePars:TNewsItem=JSON.parse(articleJSON)
-    arr.push(articlePars)
-  })
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const arr = JSON.parse(localStorage.getItem('readingList') as string)
+
+  const handlerOpen = (article: TNewsItem) => (_e: any) => {
+    navigate(`/${article.title}`)
+    dispatch(openArticle(article))
+  }
 
   return (
     <div className='wrapper-news-list'>
       <>
         <Title>Your personal reading list:</Title>
-        {arr.length === 0 && <Empty description={
+        {arr.length==0  && <Empty description={
           <>
             <h2>You have not added anything to your reading list </h2>
             <div>Go back to the home page and click on
@@ -30,15 +33,14 @@ const ReadingListPage = () => {
               </Button></div>
           </>
         } />}
-        { arr && <NewsItems articles={arr}/>}
-        {console.log(arr)}
-        {/* {arr && arr.map((article, index) => {
-          <NewsItem
+        {arr && arr.map((article: any, index: number) => {
+          return <NewsItem
             key={index}
             article={article}
+            handlerOpen={handlerOpen}
           />
         })
-        } */}
+        }
       </>
     </div>
   )

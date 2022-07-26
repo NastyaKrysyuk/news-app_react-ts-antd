@@ -1,8 +1,12 @@
 import { FC, memo, useDeferredValue, useEffect, useState } from "react";
-import { Pagination} from 'antd';
+import { notification, Pagination} from 'antd';
 import { TNewsItem } from '../../type/type';
 import './style.css'
 import NewsItem from '../../components/news-item'
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../hook/redux-hooks";
+import { addToRead, openArticle, removeNewsItem } from "../../store/slices/news-listSlices";
+import { SmileOutlined } from "@ant-design/icons";
 
 type TFilter = {
   totalLenght: number;
@@ -18,6 +22,35 @@ type TProps = {
 }
 
 const NewsItems: FC<TProps> = ({ articles }) => {
+
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch();
+
+  const handlerAddToRead = (title: string) => {
+    return (e: any) => {
+      e.stopPropagation()
+      dispatch(addToRead(title))
+      dispatch(removeNewsItem(title))
+      notification.open({
+        message: 'Article added to reading list :)',
+        icon: <SmileOutlined style={{ color: '#108ee9' }} />,
+        placement: 'top',
+      });
+    }
+  }
+
+  const handlerRemove = (title: string) => {
+    return (e: any) => {
+      e.stopPropagation()
+      dispatch(removeNewsItem(title))
+    }
+  }
+
+  const handlerOpen = (article: TNewsItem) => (_e: any) => {
+    navigate(`/${article.title}`)
+    dispatch(openArticle(article))
+  }
+
   
   const values: [] | TNewsItem[] = useDeferredValue(articles);
   const [filter, setFilter] = useState<TFilter>({
@@ -45,6 +78,9 @@ const NewsItems: FC<TProps> = ({ articles }) => {
           && <NewsItem
             key={article.title}
             article={article}
+            handlerOpen={handlerOpen}
+            handlerAddToRead={handlerAddToRead}
+            handlerRemove={handlerRemove}
           />
         ))
       }
