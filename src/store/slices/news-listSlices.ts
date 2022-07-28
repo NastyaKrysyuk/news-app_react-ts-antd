@@ -46,7 +46,7 @@ const NewsListSlice = createSlice({
         const localArticles = JSON.parse(localStorage.getItem('readingList') as string)
         localArticles.push(aticleForAdd)
         localStorage.setItem('readingList', JSON.stringify(uniq(localArticles)))
-        if (localArticles.length == uniq(localArticles).length) {
+        if (localArticles.length === uniq(localArticles).length) {
           state.count++
         }
       }

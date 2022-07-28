@@ -1,5 +1,5 @@
 .article {
-  padding: 3rem;
+  padding: 2rem 0 ;
   background: #ececec;
 }
 
@@ -9,9 +9,9 @@
   bottom: 0;
   margin: 1rem;
 }
-.article .ant-card-body{
+/* .article .ant-card-body{
   padding: 70px;
-}
+} */
 .article .ant-card .description {
   text-align: center;
   width: 70%;
@@ -39,6 +39,10 @@
   }
   .article .pablish-date >span{
   font-size: 1rem;
+  }
+
+  .article {
+    padding: 3rem;
   }
   
 }

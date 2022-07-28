@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import FormComponent from "./Form";
 import { setUser } from '../../store/slices/authSlices'
-import { useAppDispatch } from "../../hook/redux-hooks";
+import { useAppDispatch } from "../../hook/redux-hook";
 import { useEffect } from "react";
 
 
@@ -13,7 +13,7 @@ const Login = () => {
 
     let from = location.state?.from?.pathname || "/";
     const auth = getAuth();
-
+  
     useEffect(() => {
         auth.onAuthStateChanged(user => {
             if (user?.email) {
@@ -29,7 +29,6 @@ const Login = () => {
     const handleLogin = (email: string, password: string) => {
         signInWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
-                console.log(user);
                 dispatch(setUser({
                     email: user.email,
                     id: user.uid,

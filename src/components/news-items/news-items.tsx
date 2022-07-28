@@ -1,10 +1,10 @@
-import { FC, memo, useDeferredValue, useEffect, useState } from "react";
-import { notification, Pagination} from 'antd';
+import { FC, SyntheticEvent, useDeferredValue, useEffect, useState } from "react";
+import { notification, Pagination } from 'antd';
 import { TNewsItem } from '../../type/type';
 import './style.css'
 import NewsItem from '../../components/news-item'
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../hook/redux-hooks";
+import { useAppDispatch } from "../../hook/redux-hook";
 import { addToRead, openArticle, removeNewsItem } from "../../store/slices/news-listSlices";
 import { SmileOutlined } from "@ant-design/icons";
 
@@ -27,31 +27,32 @@ const NewsItems: FC<TProps> = ({ articles }) => {
   const dispatch = useAppDispatch();
 
   const handlerAddToRead = (title: string) => {
-    return (e: any) => {
+    return (e: SyntheticEvent) => {
       e.stopPropagation()
       dispatch(addToRead(title))
       dispatch(removeNewsItem(title))
       notification.open({
-        message: 'Article added to reading list :)',
+        message: 'Article added to reading list.',
         icon: <SmileOutlined style={{ color: '#108ee9' }} />,
-        placement: 'top',
+        placement: 'bottom',
+        duration: 2
       });
     }
   }
 
   const handlerRemove = (title: string) => {
-    return (e: any) => {
+    return (e: SyntheticEvent) => {
       e.stopPropagation()
       dispatch(removeNewsItem(title))
     }
   }
 
-  const handlerOpen = (article: TNewsItem) => (_e: any) => {
+  const handlerOpen = (article: TNewsItem) => (_e: SyntheticEvent) => {
     navigate(`/${article.title}`)
     dispatch(openArticle(article))
   }
 
-  
+
   const values: [] | TNewsItem[] = useDeferredValue(articles);
   const [filter, setFilter] = useState<TFilter>({
     totalLenght: 0,
@@ -63,7 +64,12 @@ const NewsItems: FC<TProps> = ({ articles }) => {
   })
 
   const handlerPage = (page: number) => {
-    setFilter({ ...filter, current: page, minIndex: (page - 1) * filter.pageSize, maxIndex: page * filter.pageSize })
+    setFilter({
+      ...filter,
+      current: page,
+      minIndex: (page - 1) * filter.pageSize,
+      maxIndex: page * filter.pageSize
+    })
   }
 
   useEffect(() => {
