@@ -4,8 +4,8 @@ import FilterComponent from '../controls/filter';
 import { TNewsItem } from '../../type/type';
 import NewsItems from '../news-items/news-items';
 
-import { useAppSelector } from '../../hook/redux-hooks';
-import { useAppDispatch } from '../../hook/redux-hooks';
+import { useAppSelector } from '../../hook/redux-hook';
+import { useAppDispatch } from '../../hook/redux-hook';
 import { Spin } from 'antd';
 import './style.css'
 import { fetchNewsList } from "../../store/actions/news";

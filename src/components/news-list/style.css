@@ -4,7 +4,8 @@
   display: flex;
   flex-wrap: wrap;
   width: 90%;
-  margin:8rem auto;
+  margin: 8rem auto 0 auto;
+  min-height: 100vh;
 }
 
 .example {
