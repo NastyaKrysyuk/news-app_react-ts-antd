@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { Button, Form, Input } from 'antd';
 
 type TProps = {
-  title: string;
+  title: string,
   handleClick: (email: string, pass: string) => void;
 }
 

@@ -13,11 +13,11 @@ const ReadingListPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const arr = JSON.parse(localStorage.getItem('readingList') as string)
+  const arr = JSON.parse(localStorage.getItem('readingList') as string);
 
   const handlerOpen = (article: TNewsItem) => (_e: any) => {
-    navigate(`/${article.title}`)
-    dispatch(openArticle(article))
+    navigate(`/${article.title}`);
+    dispatch(openArticle(article));
   }
 
   return (

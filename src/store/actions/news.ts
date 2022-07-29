@@ -8,10 +8,10 @@ export const fetchNewsList = createAsyncThunk(
     'NewsList/fetchNewsList',
     async function (sortBy: string, { rejectWithValue }) {
         try {
-            let articlesFirebase: TNewsItem[] = []
+            let articlesFirebase: TNewsItem[] = [];
             const querySnapshot : QuerySnapshot<DocumentData> = await getDocs(collection(db, "articles"));
             querySnapshot.forEach((doc) => { articlesFirebase.push(doc.data().values) });
-            const response = await Newsapi.getNews(`?q=art%painter&NFT&`, sortBy)
+            const response = await Newsapi.getNews(`?q=art%painter&NFT&`, sortBy);
             const articles = articlesFirebase.reverse().concat(response.articles);
             return articles;
 

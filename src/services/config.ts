@@ -9,7 +9,7 @@ status:string,
 totalResults:number
 }
 export async function getData(url: string): Promise<TRes> {
-  const res = await fetch(`${path}${url}apiKey=${key}`)
+  const res = await fetch(`${path}${url}apiKey=${key}`);
   if (!res.ok) new Error(`Could not fetch ${url}` + `, received ${res.status}`)
   return res.json();
 }

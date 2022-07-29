@@ -17,6 +17,7 @@ const Navigation: FC<TProps> = ({ className, handlerClickMenu }) => {
   const auth = getAuth();
   const { email, admins } = useAuth();
 
+
   return (
     <nav className={className}>
       <NavLink to='/' onClick={handlerClickMenu}>Home</NavLink>

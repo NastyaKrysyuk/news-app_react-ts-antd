@@ -1,2 +1,2 @@
 import LoginPage from "./loginPage";
-export default LoginPage
+export default LoginPage;

@@ -7,7 +7,7 @@ const FilterComponent = () => {
   const dispatch = useAppDispatch();
 
   const handleChange = (value: { value: string }) => {
-    dispatch(fetchNewsList(`${value}`))
+    dispatch(fetchNewsList(`${value}`));
   };
 
   return (

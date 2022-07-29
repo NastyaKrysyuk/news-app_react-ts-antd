@@ -7,16 +7,16 @@ import { MenuOutlined } from "@ant-design/icons";
 import './style.css'
 
 const Header = () => {
-  const [show, setShow] = useState<boolean>(false)
+  const [show, setShow] = useState<boolean>(false);
   const { isAuth } = useAuth();
   const navigate = useNavigate();
 
   const handlerClickHome = (_e: any) => {
-    navigate('/')
+    if(isAuth)  navigate('/');
   }
 
   const handlerClickMenu = (_e: any) => {
-    setShow(!show)
+    if(isAuth)  setShow(!show);
   }
 
   return (

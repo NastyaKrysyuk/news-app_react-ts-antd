@@ -1,2 +1,2 @@
 import Navigation from "./navigation";
-export default Navigation
+export default Navigation;

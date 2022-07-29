@@ -29,12 +29,12 @@ function RoutesCore() {
 }
 
 function AppRouting() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { isAuth } = useAuth();
   let location = useLocation();
   useEffect(() => {
     if (!isAuth) {
-      navigate('/login', {state: {from: location}})
+      navigate('/login', {state: {from: location}});
     }
   }, [isAuth])
   return <RoutesCore/>

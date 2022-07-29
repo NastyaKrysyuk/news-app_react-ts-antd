@@ -27,7 +27,7 @@ const NewsListSlice = createSlice({
     },
 
     openArticle(state, action: { payload: TNewsItem }) {
-      state.article = action.payload
+      state.article = action.payload;
     },
 
     addToRead(state, action) {
@@ -43,11 +43,11 @@ const NewsListSlice = createSlice({
       const aticleForAdd: TNewsItem | undefined = state.articles.find((el: TNewsItem) => { return el.title === action.payload });
 
       if (aticleForAdd) {
-        const localArticles = JSON.parse(localStorage.getItem('readingList') as string)
-        localArticles.push(aticleForAdd)
-        localStorage.setItem('readingList', JSON.stringify(uniq(localArticles)))
+        const localArticles = JSON.parse(localStorage.getItem('readingList') as string);
+        localArticles.push(aticleForAdd);
+        localStorage.setItem('readingList', JSON.stringify(uniq(localArticles)));
         if (localArticles.length === uniq(localArticles).length) {
-          state.count++
+          state.count++;
         }
       }
     },
