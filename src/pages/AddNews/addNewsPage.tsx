@@ -35,7 +35,7 @@ const AddNewsPage = () => {
   const [form] = Form.useForm();
 
   const onFinish = async (values: any) => {
-    values.publishedAt = values.publishedAt._d.toISOString()
+    values.publishedAt = values.publishedAt._d.toISOString();
     try {
       const docRef = await addDoc(collection(db, "articles"), {
         values

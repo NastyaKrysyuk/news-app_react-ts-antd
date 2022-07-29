@@ -42,14 +42,14 @@ const NewsItems: FC<TProps> = ({ articles }) => {
 
   const handlerRemove = (title: string) => {
     return (e: SyntheticEvent) => {
-      e.stopPropagation()
-      dispatch(removeNewsItem(title))
+      e.stopPropagation();
+      dispatch(removeNewsItem(title));
     }
   }
 
   const handlerOpen = (article: TNewsItem) => (_e: SyntheticEvent) => {
-    navigate(`/${article.title}`)
-    dispatch(openArticle(article))
+    navigate(`/${article.title}`);
+    dispatch(openArticle(article));
   }
 
 
@@ -73,7 +73,7 @@ const NewsItems: FC<TProps> = ({ articles }) => {
   }
 
   useEffect(() => {
-    handlerPage(filter.current)
+    handlerPage(filter.current);
   }, [])
 
   return (
