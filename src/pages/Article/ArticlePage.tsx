@@ -41,7 +41,8 @@ const ArticlePage = () => {
           type="primary"
           shape="round"
           icon={<LinkOutlined />}
-          href={article?.url}>
+          href={article?.url}
+          target='_blank'>
           Read more
         </Button>
       </Card>

@@ -1,22 +1,21 @@
 import { DeleteOutlined } from '@ant-design/icons';
 import { Badge, Button, Card, Popover } from 'antd';
-import { FC, memo } from 'react';
+import { FC, SyntheticEvent } from 'react';
 import { TNewsItem } from '../../type/type';
 
 const { Meta } = Card;
 
 type TProps = {
   article: TNewsItem,
-  handlerOpen?: any,
-  handlerAddToRead?: any,
-  handlerRemove?: any
+  handlerOpen?: (article: TNewsItem) => (e: SyntheticEvent) => void,
+  handlerAddToRead?: (title: string) => (e: SyntheticEvent) => void,
+  handlerRemove?: (title: string) => (e: SyntheticEvent) => void
 }
 const NewsItem: FC<TProps> = ({ article, handlerOpen, handlerAddToRead, handlerRemove }) => {
   return (
- 
     <div
       className="castom-card site-card-wrapper"
-      style={{ backgroundImage: `url(${article.urlToImage})` }}
+      style={{ backgroundImage:`url(${article.urlToImage})`}}
       onClick={handlerOpen && handlerOpen(article)}
     > 
        
