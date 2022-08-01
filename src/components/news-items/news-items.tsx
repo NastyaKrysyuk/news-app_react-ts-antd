@@ -12,7 +12,7 @@ type TFilter = {
   totalLenght: number;
   pageSize: number;
   totalPage: number;
-  current: number;
+  defaultCurrent: number;
   minIndex: number;
   maxIndex: number;
 }
@@ -58,7 +58,7 @@ const NewsItems: FC<TProps> = ({ articles }) => {
     totalLenght: 0,
     pageSize: 12,
     totalPage: 0,
-    current: 1,
+    defaultCurrent: 1,
     minIndex: 0,
     maxIndex: 0
   })
@@ -66,16 +66,16 @@ const NewsItems: FC<TProps> = ({ articles }) => {
   const handlerPage = (page: number) => {
     setFilter({
       ...filter,
-      current: page,
+      defaultCurrent: page,
       minIndex: (page - 1) * filter.pageSize,
       maxIndex: page * filter.pageSize
     })
   }
 
   useEffect(() => {
-    handlerPage(filter.current);
+    handlerPage(filter.defaultCurrent);
   }, [])
-
+  console.log(values.length)
   return (
     <>
       {
@@ -92,7 +92,9 @@ const NewsItems: FC<TProps> = ({ articles }) => {
       }
       <div className="pagination">
         <Pagination
-          current={filter.current}
+          pageSize={filter.pageSize}
+          showSizeChanger={false}
+          defaultCurrent={filter.defaultCurrent}
           onChange={handlerPage}
           total={values?.length}
         />
