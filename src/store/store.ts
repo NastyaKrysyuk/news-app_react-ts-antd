@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './slices/authSlices'
-import  newsListReducer from './slices/news-listSlices'
+import authReducer from './slices/auth-slice'
+import  newsListReducer from './slices/news-list-slice'
 
 export const store = configureStore({
   reducer: {

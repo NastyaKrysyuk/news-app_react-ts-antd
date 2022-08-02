@@ -1,12 +1,13 @@
 import { FC, SyntheticEvent, useDeferredValue, useEffect, useState } from "react";
-import { notification, Pagination } from 'antd';
 import { TNewsItem } from '../../type/type';
-import './style.css'
 import NewsItem from '../../components/news-item'
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hook/redux-hook";
-import { addToRead, openArticle, removeNewsItem } from "../../store/slices/news-listSlices";
+import { addToRead, openArticle, removeNewsItem } from "../../store/slices/news-list-slice";
+
 import { SmileOutlined } from "@ant-design/icons";
+import { notification, Pagination } from 'antd';
+import './style.css'
 
 type TFilter = {
   totalLenght: number;
@@ -22,7 +23,8 @@ type TProps = {
 }
 
 const NewsItems: FC<TProps> = ({ articles }) => {
-
+  
+  const values: [] | TNewsItem[] = useDeferredValue(articles);
   const navigate = useNavigate()
   const dispatch = useAppDispatch();
 
@@ -51,9 +53,6 @@ const NewsItems: FC<TProps> = ({ articles }) => {
     navigate(`/${article.title}`);
     dispatch(openArticle(article));
   }
-
-
-  const values: [] | TNewsItem[] = useDeferredValue(articles);
   const [filter, setFilter] = useState<TFilter>({
     totalLenght: 0,
     pageSize: 12,
@@ -74,8 +73,9 @@ const NewsItems: FC<TProps> = ({ articles }) => {
 
   useEffect(() => {
     handlerPage(filter.defaultCurrent);
+    // eslint-disable-next-line
   }, [])
-  console.log(values.length)
+
   return (
     <>
       {
@@ -103,4 +103,4 @@ const NewsItems: FC<TProps> = ({ articles }) => {
   )
 }
 
-export default NewsItems
+export default NewsItems;

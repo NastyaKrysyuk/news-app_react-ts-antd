@@ -5,7 +5,7 @@ import { FC, SyntheticEvent } from "react";
 import { NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hook/redux-hook";
 import { useAuth } from "../../hook/use-auth";
-import { removeUser } from "../../store/slices/authSlices";
+import { removeUser } from "../../store/slices/auth-slice";
 
 type TProps = {
   className: string;

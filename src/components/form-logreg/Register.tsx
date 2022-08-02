@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import FormComponent from "./Form";
-import { setUser } from '../../store/slices/authSlices'
+import { setUser } from '../../store/slices/auth-slice'
 import { useAppDispatch } from "../../hook/redux-hook";
 
 const Register = () => {

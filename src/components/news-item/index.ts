@@ -1,2 +1,2 @@
-import NewsItem from "./news-item";
+import {NewsItem} from "./news-item";
 export default NewsItem;

@@ -3,7 +3,7 @@ import { TNewsItem } from "../../type/type";
 import './style.css'
 import NewsItem from '../../components/news-item'
 import { useAppDispatch } from "../../hook/redux-hook";
-import { openArticle } from "../../store/slices/news-listSlices";
+import { openArticle } from "../../store/slices/news-list-slice";
 import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
@@ -24,7 +24,7 @@ const ReadingListPage = () => {
     <div className='wrapper-news-list'>
       <>
         <Title>Your personal reading list:</Title>
-        {arr.length == 0 && <Empty description={
+        {arr.length === 0 && <Empty description={
           <>
             <h2>You have not added anything to your reading list </h2>
             <div>Go back to the home page and click on
