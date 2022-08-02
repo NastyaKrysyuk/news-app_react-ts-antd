@@ -10,21 +10,11 @@ const FormComponent: FC<TProps> = ({ title, handleClick }) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
 
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-  };
-
   return (
     <Form
       name="basic"
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 16 }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
       <Form.Item

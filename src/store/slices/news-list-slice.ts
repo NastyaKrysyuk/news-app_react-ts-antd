@@ -14,7 +14,7 @@ const initialState: TState = {
   article: null,
   loading: false,
   error: null,
-  count: !!localStorage.getItem('readingList') ? JSON.parse(localStorage.getItem('readingList') as string).length : 0 ,
+  count: !!localStorage.getItem('readingList') ? JSON.parse(localStorage.getItem('readingList') as string).length : 0,
 }
 
 const NewsListSlice = createSlice({
@@ -32,11 +32,11 @@ const NewsListSlice = createSlice({
 
     addToRead(state, action) {
 
-      const uniq = function (array: TNewsItem[]) {
-        const seen:any = {};
-        return array.filter(function(x) {
-          const key = JSON.stringify(x.title);
-          return !(key in seen) && (seen[key] = x);
+      const uniq = (array: TNewsItem[]) => {
+        const seen: any = {};
+        return array.filter((el: TNewsItem) => {
+          const key = JSON.stringify(el.title);
+          return !(key in seen) && (seen[key] = el);
         });
       }
 
@@ -51,11 +51,6 @@ const NewsListSlice = createSlice({
         }
       }
     },
-
-    setCount(state, action) {
-      state.count = action.payload
-    },
-
   },
   extraReducers: {
     [fetchNewsList.pending.type]: (state) => {
@@ -72,6 +67,6 @@ const NewsListSlice = createSlice({
   }
 })
 
-export const { removeNewsItem, openArticle, addToRead, setCount } = NewsListSlice.actions
+export const { removeNewsItem, openArticle, addToRead } = NewsListSlice.actions;
 
 export default NewsListSlice.reducer;

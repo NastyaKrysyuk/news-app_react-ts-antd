@@ -12,24 +12,24 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handlerClickHome = (_e: any) => {
-    if(isAuth)  navigate('/');
+    if (isAuth) navigate('/');
   }
 
   const handlerClickMenu = (_e: any) => {
-    if(isAuth)  setShow(!show);
+    if (isAuth) setShow(!show);
   }
 
   return (
     <>
-      {isAuth
-        && <Navigation
-          className={show ? 'mobile-navigation active' : 'mobile-navigation'}
-          handlerClickMenu={handlerClickMenu} />}
+      <Navigation
+        className={show ? 'mobile-navigation active' : 'mobile-navigation'}
+        handlerClickMenu={handlerClickMenu} />
       <PageHeader
         className="site-page-header"
         title={
           <>
-            <MenuOutlined onClick={handlerClickMenu} />
+            {isAuth
+              && <MenuOutlined onClick={handlerClickMenu} />}
             <span className="logo" onClick={handlerClickHome}>
               ART
             </span>
@@ -37,10 +37,10 @@ const Header = () => {
         }
         subTitle="news">
         {isAuth
-          && <Navigation className="navigation"/>}
+          && <Navigation className="navigation" />}
       </PageHeader>
     </>
   )
 }
 
-export default Header
+export default Header;
