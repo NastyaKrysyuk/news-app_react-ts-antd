@@ -1,1 +1,0 @@
-import Article from "./news-article";
