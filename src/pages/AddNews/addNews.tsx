@@ -3,6 +3,7 @@ import { Button, DatePicker, Form, Input, Modal, Typography } from 'antd';
 import { collection, addDoc } from "firebase/firestore";
 import NewsItem from '../../components/news-item';
 import { db } from '../../firebase';
+import { TNewsItem } from '../../type';
 import './style.css'
 
 const { Title } = Typography;
@@ -35,7 +36,7 @@ const AddNewsPage = () => {
   const [form] = Form.useForm();
 
   const onFinish = async (values: any) => {
-    values.publishedAt = values.publishedAt._d.toISOString();
+    values.publishedAt= values.publishedAt.toISOString()
     try {
       const docRef = await addDoc(collection(db, "articles"), {
         values
@@ -47,7 +48,7 @@ const AddNewsPage = () => {
     form.resetFields();
   };
 
-  const showPromiseConfirm = (values: any) => {
+  const showPromiseConfirm = (values: TNewsItem) => {
     confirm({
       title: 'Preview',
       icon: <ExclamationCircleOutlined />,

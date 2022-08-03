@@ -1,5 +1,5 @@
 import { FC, SyntheticEvent, useDeferredValue, useEffect, useState } from "react";
-import { TNewsItem } from '../../type/type';
+import { TNewsItem } from '../../type';
 import NewsItem from '../../components/news-item'
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hook/redux-hook";

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Register from "../../components/form-logreg/Register"
+import Register from "../../components/form-authentication/Register"
 
 const RegisterPage = () => {
     return (

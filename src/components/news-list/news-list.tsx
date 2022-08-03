@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SearchComponent from '../controls/serch';
 import FilterComponent from '../controls/filter';
-import { TNewsItem } from '../../type/type';
+import { TNewsItem } from '../../type';
 import NewsItems from '../news-items/news-items';
 
 import { useAppSelector } from '../../hook/redux-hook';

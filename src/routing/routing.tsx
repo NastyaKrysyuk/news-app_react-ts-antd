@@ -1,4 +1,4 @@
-import { TRoute } from "../type/type";
+import { TRoute } from "../type";
 import { Paths } from "./path";
 
 import { useLocation, useNavigate, useRoutes } from "react-router-dom";
@@ -21,7 +21,7 @@ export const Routes: TRoute[] = [
   { path: Paths.login, element: <LoginPage />, name: 'Login' },
   { path: Paths.register, element: <RegisterPage />, name: 'Register' },
   { path: Paths.readinglist, element: <ReadingListPage />, name: 'ReadingList' },
-  { path: Paths.addnews, element: <AddNewsPage />, userRole: 'admin', name: 'AddNews' },
+  { path: Paths.addnews, element: <AddNewsPage />, name: 'AddNews' },
 ]
 
 function RoutesCore() {
@@ -39,4 +39,4 @@ function AppRouting() {
   }, [isAuth])
   return <RoutesCore/>
 }
-export default AppRouting
+export default AppRouting;
