@@ -1,7 +1,7 @@
 import { DeleteOutlined } from '@ant-design/icons';
 import { Button, Card, Popover } from 'antd';
 import { FC, memo, SyntheticEvent } from 'react';
-import { TNewsItem } from '../../type/type';
+import { TNewsItem } from '../../type';
 
 const { Meta } = Card;
 
@@ -41,6 +41,5 @@ const NewsItemInner: FC<TProps> = ({ article, handlerOpen, handlerAddToRead, han
 }
 
 export const NewsItem = memo(NewsItemInner, (prevProps, nextPropx) => {
-  if (nextPropx.article.title !== prevProps.article.title) return false;
-  else return true;
+  return nextPropx.article.title === prevProps.article.title;
 });

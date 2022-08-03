@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Login from "../../components/form-logreg/Login"
+import Login from "../../components/form-authentication/Login"
 
 const LoginPage = () => {
     return (
@@ -11,8 +11,7 @@ const LoginPage = () => {
                     Or <Link to="/register">register</Link>
                 </p>
             </div>
-            <div className="img-content">
-            </div>
+            <div className="img-content"/>
         </div>
     )
 

@@ -1,2 +1,2 @@
-import AddNewsPage from "./addNewsPage";
+import AddNewsPage from "./addNews";
 export default AddNewsPage;

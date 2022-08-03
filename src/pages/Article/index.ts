@@ -1,2 +1,2 @@
-import ArticlePage from "./ArticlePage";
+import ArticlePage from "./Article";
 export default ArticlePage;

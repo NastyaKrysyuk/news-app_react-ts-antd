@@ -1,2 +1,2 @@
-import ReadingListPage from "./readingListPage";
+import ReadingListPage from "./readingList";
 export default ReadingListPage;

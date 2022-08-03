@@ -1,5 +1,5 @@
 import { Button, Empty, Typography } from "antd";
-import { TNewsItem } from "../../type/type";
+import { TNewsItem } from "../../type";
 import './style.css'
 import NewsItem from '../../components/news-item'
 import { useAppDispatch } from "../../hook/redux-hook";

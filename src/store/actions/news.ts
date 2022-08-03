@@ -2,7 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import Newsapi from "../../services/config";
 import { collection, DocumentData, getDocs, QuerySnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
-import { TNewsItem } from "../../type/type";
+import { TNewsItem } from "../../type";
+
 
 export const fetchNewsList = createAsyncThunk(
     'NewsList/fetchNewsList',

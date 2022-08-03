@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchNewsList } from "../actions/news";
-import { TNewsItem } from "../../type/type";
+import { TNewsItem } from "../../type";
 
 type TState = {
   articles: TNewsItem[],

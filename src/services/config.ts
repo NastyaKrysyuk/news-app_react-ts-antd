@@ -1,4 +1,4 @@
-import { TNewsItem } from "../type/type";
+import { TNewsItem } from "../type";
 
 const path = "https://newsapi.org/v2/everything";
 const key = 'e1f6d61fb3224655b09882e1f3fc11b4';
@@ -8,6 +8,7 @@ articles:TNewsItem[],
 status:string,
 totalResults:number
 }
+
 export async function getData(url: string): Promise<TRes> {
   const res = await fetch(`${path}${url}apiKey=${key}`);
   if (!res.ok) new Error(`Could not fetch ${url}` + `, received ${res.status}`)
