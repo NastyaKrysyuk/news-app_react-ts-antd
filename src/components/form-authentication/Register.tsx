@@ -20,6 +20,7 @@ const Register = () => {
                     id: user.uid,
                 }));
                 navigate(from, { replace: true });
+                if(!localStorage.getItem('readingList')) localStorage.setItem('readingList','[]');
             })
             .catch(console.error)
     }
