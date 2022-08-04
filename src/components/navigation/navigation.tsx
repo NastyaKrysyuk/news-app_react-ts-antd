@@ -16,7 +16,7 @@ const Navigation: FC<TProps> = ({ className, handlerClickMenu }) => {
   const dispatch = useAppDispatch();
   const auth = getAuth();
   const { email, admins } = useAuth();
-
+  
 
   return (
     <nav className={className}>
@@ -25,7 +25,7 @@ const Navigation: FC<TProps> = ({ className, handlerClickMenu }) => {
         <NavLink to='/readinglist' onClick={handlerClickMenu}>Reading list</NavLink>
       </Badge>
       {email
-        && admins.some((el: string) => el == email)
+        && admins.some((el: string) => el === email)
         && <NavLink to='/addnews' onClick={handlerClickMenu} >+ Add news</NavLink>}
       <Button type="link" className="btn-logout"
         onClick={() => {
